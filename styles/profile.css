@@ -1,0 +1,95 @@
+.profile-page-container {
+  display: flex;
+  flex: 1;
+}
+
+.profile-sidebar {
+  display: flex;
+  padding-top: 100px;
+  padding-bottom: 235px;
+  flex-direction: column;
+  background-color: white;
+  box-shadow: 1px 1px 4px;
+}
+
+.profile-sidebar div {
+  display: flex;
+  justify-content: center;
+  width: 60px;
+  padding: 0;
+  padding-bottom: 5px;
+  padding-top: 5px;
+}
+
+.sidebar-button.active {
+  background-color: #d50032;
+}
+
+.profile-sidebar div:hover {
+  background-color: #d50032;
+}
+
+.profile-sidebar img {
+  width: 50px;
+}
+
+.single-settings-container {
+  display: flex;
+  flex-direction: column;
+  margin: 20px 40px;
+  box-shadow: 1px 1px 4px;
+  border-radius: 10px;
+}
+
+.gradient-banner {
+  height: 100px;
+  width: 1200px;
+  background-image: linear-gradient(to right, #d50032, rgb(26, 23, 23));
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.single-settings-container {
+  height: 600px;
+  background-color: white;
+}
+
+.information-display-container {
+  padding: 25px;
+}
+
+.nameDisplay {
+  font-weight: 500; 
+  font-size: 30px; 
+  margin: 2px 0px;
+  padding: 0px;
+}
+
+.emailDisplay {
+  color: gray; 
+  font-size: 13px;
+  padding: 0px;
+}
+
+.change-display-name-button {
+  cursor: pointer;
+  border: none;
+  background-color: #d50032;
+  color: white;
+  padding: 10px;
+  border-radius: 7px;
+  font-weight: 500;
+  height: 45px;
+  
+}
+
+.confirm-excluded-lots-button {
+  width: 250px;
+  cursor: pointer;
+  background-color: #1efc55;
+  margin: 20px;
+  padding: 14px 45px;
+  border: none;
+  font-weight: bold;
+  box-shadow: 0px 0.5px 3px;
+}

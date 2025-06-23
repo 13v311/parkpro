@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../styles/parkstrat.css">
+  </head>
+  <body>
+    <div class="logo-container">
+      <a href="homepage.html"> 
+        <img class="logo" src="../images/ParkProUIC-logo.png">
+      </a>
+    </div>  
+    <section class="strategies-section">
+      <div class="strategy-container">
+        <p class="strategy-title">Average Walking Time</p>
+        <p>Description: Calculates the average walking time from a parking lot to all of your class buildings and ranks the lots by lowest average time.</p>
+        <div class="pros-and-cons-container">
+          <div class="pros-container">
+            <p class="pros-title">Pros</p>
+            <p>- Simple and balanced across all buildings</p>
+            <p>- Great when your classes are spread evenly across campus</p>
+            <p>- Easy to understand</p>
+          </div>
+          <hr>
+          <div class="cons-container">
+            <p class="cons-title">Cons</p>
+            <p>- Doesn’t prioritize especially long walks or specific class preferences</p>
+          </div>
+        </div>
+        <button class="calculate-average-button" onclick="redirect(1)">Calculate Avg Times</button>
+      </div>
+      <div class="strategy-container">
+        <p class="strategy-title">Majority Strategy</p>
+        <p>Description: Finds the closest parking lot to each individual building and ranks lots by how many times they appear as the “closest” across all your classes.</p>
+        <p style="color: green;">*best used when excluding lots from your calculation</p>
+        <div class="pros-and-cons-container">
+          <div class="pros-container">
+            <p class="pros-title">Pros</p>
+            <p>- Great for schedules that jump between distant buildings</p>
+            <p>- Useful if you want minimal walking to any class</p>
+            <p>- Easy to understand</p>
+          </div>
+          <hr>
+          <div class="cons-container">
+            <p class="cons-title">Cons</p>
+            <p>- May favor lots that are closest to just one building</p>
+            <p>- Doesn’t account for overall walking effort — just count of appearances</p>
+          </div>
+        </div>
+        <button class="calculate-most-appeared-button" onclick="redirect(2)">Calculate Lots Closest To Majority of Your Classes</button>
+      </div>
+      <div class="strategy-container">
+        <p class="strategy-title">Weighted Prioritization</p>
+        <p>Description: Lets you assign a priority value (1 to 3) to each class — the algorithm will weigh walking time more heavily for higher-priority classes (e.g. early morning or back-to-back classes).</p>
+        <div class="pros-and-cons-container">
+          <div class="pros-container">
+            <p class="pros-title">Pros</p>
+            <p>- Gives you more control over your own schedule</p>
+            <p>- Ideal for minimizing effort around important or time-sensitive classes</p>
+          </div>
+          <hr>
+          <div class="cons-container">
+            <p class="cons-title">Cons</p>
+            <p>- Slightly more effort to set up</p>
+            <p>- Might ignore lower-priority classes completely if weighting is skewed</p>
+          </div>
+        </div>
+        <button class="calculate-weighted-average-button" onclick="redirect(3)">Calculate Weighted Avg Times</button>
+      </div>
+    </section>
+
+
+
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+
+    <!-- Your shared Firebase config -->
+    <script src="/scripts/firebase-init.js"></script>
+
+    <script src="/scripts/parkstrat.js"></script>
+  </body>
+</html>

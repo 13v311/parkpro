@@ -1,0 +1,97 @@
+section {
+  margin-bottom: 15px;
+}
+
+.faq-segmentq, .faq-segmenta {
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  align-items: center;
+  height: 100px;
+  margin-left: 70px;
+  width: 1100px;
+  box-sizing: border-box;
+
+}
+
+.faq-segmentq {
+  background-color: rgba(128, 128, 128, 0.082);
+}
+
+.dropdown-button {
+  cursor: pointer;
+  background-image: url('/images/dropdown-arrow-icon.jpg');
+  background-size: cover;
+  height: 100px;
+  width: 100px;
+  border: none;
+  position: absolute;
+  left: 1000px;
+}
+
+
+.rotated {
+  transform: rotate(180deg);
+}
+
+.faq-segmentq p,
+.faq-segmenta p {
+  font-family: Roboto, Arial;
+  font-size: 60px;
+  padding-left: 8px;
+}
+
+.faq-segmentq p {
+  color: #d50032;
+}
+
+.faq-segmenta p {
+  color: rgb(158, 157, 157);
+}
+
+.question-sidebar {
+  height: 100px;
+  width: 4px;
+  background-color: #d50032;
+
+}
+
+.question-button {
+  width: 950px;
+}
+
+.question-button, .answer-button {
+  height: 100px;
+  background-color: transparent;
+  border: none;
+}
+
+.answer-button {
+  width: 1000px;
+}
+
+.question-button p {
+  color: rgb(51, 51, 51);
+  font-weight: 500;
+  padding-left: 16px;
+  text-align: left;
+  font-size: 30px;
+}
+
+.answer-button p {
+  text-align: left;
+  padding-left: 16px;
+  font-size: 20px;
+}
+
+.faq-segmenta {
+  background-color: rgba(128, 128, 128, 0.021);
+}
+
+.answer-sidebar {
+  height: 100px;
+  width: 4px;
+  background-color: rgb(158, 157, 157);
+}
+
+

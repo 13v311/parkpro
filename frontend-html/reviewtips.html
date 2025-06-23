@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../styles/reviewtips.css">
+    <link rel="stylesheet" href="../styles/parkpro-sharedstyles.css">
+    <!---->
+  </head>
+  <body>
+    <header class="full-header">
+      <div class="logo-container">
+        <a href="homepage.html"> 
+          <img class="logo" src="../images/ParkProUIC-logo.png">
+        </a>
+      </div>
+      <div class="header-right">
+        <button><a href="lotfinder.html">Find a Lot</a></button>
+        <button><a href="tips.html">Tips</a></button>
+        <button><a href="faq.html">FAQ</a></button>
+        <button><a href="resources.html">Resources</a></button>
+        <button><a href="contact.html">Contact</a></button>
+        <a href="profile.html">
+          <img class="header-profile-button" src="../images/blankprofile.png">
+        </a>
+        <div id="userGreeting" style="color: white"></div>
+      </div>
+    </header>
+    <div class="all-tips-container"></div>
+  </body>
+
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-database-compat.js"></script>
+
+    <!-- Your shared Firebase config -->
+    <script src="/scripts/firebase-init.js"></script>
+    
+    <script src="/scripts/reviewtips.js"></script>
+</html>

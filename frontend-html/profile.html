@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../styles/profile.css">
+    <link rel="stylesheet" href="../styles/parkpro-sharedstyles.css">
+    <!---->
+  </head>
+  <body>
+    <div class="profile-page-container">
+      <div class="profile-sidebar">
+        <div id="displaySettings" class="sidebar-button active" data-target="settings">
+          <img src="../images/sparkleicon.png">
+        </div>
+        <div id="userPreferences" class="sidebar-button" data-target="preferences">
+          <img src="../images/preferencesicon.png">
+        </div>
+        <div id="savedSchedules" class="sidebar-button">
+          <img src="../images/calendaricon.png">
+        </div>
+        <div id="myTips" class="sidebar-button">
+          <img src="../images/writing-notebookicon.png">
+        </div>
+        <div id="userSecurity" class="sidebar-button">
+          <img src="../images/securityicon.png">
+        </div>
+        <div id="exit" class="sidebar-button">
+          <a href="homepage.html">
+            <img src="../images/exitwindow.png">
+          </a>
+        </div>
+      </div>
+        <div class="single-settings-container">
+          <div class="gradient-banner"></div>
+          <!--each information display container is separated by id which matches the content youll find in them-->
+          <div class="information-display-container" id="preferences">
+            <div style="display: flex; width: 1fr">
+              <div style="font-size: 20px; font-weight: 500">Set Default Parking Strategy
+                <p style="font-size: 14px; width: 300px">*instead of asking which parking strategy you'd like to use, this will automatically choose it for you. since it will no longer ask you, you will need to reset these settings to receive the other methods again</p>
+              </div>
+              <div style="width: 55%"></div>
+              <div style="font-size: 20px; font-weight: 500">Set Default Results Length
+                <p style="font-size: 14px">*this will allow you to choose how many lots appear when you calculate your parking results</p>
+                <select>
+                  <option value="N/A">Choose the Ranking You'd Prefer</option>
+                  <option>Highest Ranking Only</option>
+                  <option>Top 3</option>
+                  <option>Top 5</option>
+                  <option>Default (All Lots Appear)</option>
+                </select>
+              </div>
+            </div>
+            <div style="display: flex; width: 1fr; margin-top: 20px">
+              <div style="font-size: 20px; font-weight: 500">Favorite Lots
+                <p style="width: 300px">h</p>
+              </div>
+              <div style="width: 50%"></div>
+              <div style="font-size: 20px; font-weight: 500">Excluded Lots
+                <p style="color: red">Are there any lots you'd like to exclude from the calculation because they're currently full, no longer available to purchase, or just a lot you don't see yourself parking in? If so, check the boxes below!</p>
+                <form id="excludedLotsForm">
+                  <input type="checkbox" id="lotItem1" name="lotItem1" value="Lot 1A">
+                  <label for="lotItem1">Lot 1A</label>
+                  <input type="checkbox" id="lotItem2" name="lotItem2" value="Lot 1B">
+                  <label for="lotItem1">Lot 1B</label>
+                  <input type="checkbox" id="lotItem3" name="lotItem3" value="Lot 3">
+                  <label for="lotItem1">Lot 3</label>
+                  <input type="checkbox" id="lotItem4" name="lotItem4" value="Lot 5">
+                  <label for="lotItem1">Lot 5</label>
+                  <input type="checkbox" id="lotItem5" name="lotItem5" value="Lot 6">
+                  <label for="lotItem1">Lot 6</label>
+                  <input type="checkbox" id="lotItem6" name="lotItem6" value="Lot 8">
+                  <label for="lotItem1">Lot 8</label>
+                  <input type="checkbox" id="lotItem7" name="lotItem7" value="Lot 9">
+                  <label for="lotItem1">Lot 9</label>
+                  <input type="checkbox" id="lotItem8" name="lotItem8" value="Lot 11">
+                  <label for="lotItem1">Lot 11</label>
+                  <input type="checkbox" id="lotItem9" name="lotItem9" value="Lot 14">
+                  <label for="lotItem1">Lot 14</label>
+                  <input type="checkbox" id="lotItem10" name="lotItem10" value="Lot 20">
+                  <label for="lotItem1">Lot 20</label>
+                  <input type="checkbox" id="lotItem11" name="lotItem11" value="Halsted Taylor Parking Structure">
+                  <label for="lotItem1">Halsted/Taylor Street Parking Structure</label><br>
+                  <input type="checkbox" id="lotItem12" name="lotItem12" value="Harrison Street Parking Structure">
+                  <label for="lotItem1">Harrison Street Parking Structure</label><br>
+                  <input type="checkbox" id="lotItem13" name="lotItem13" value="Maxwell Street Parking Structure">
+                  <label for="lotItem1">Maxwell Street Parking Structure</label><br>
+                </form>
+                <button class="confirm-excluded-lots-button" onclick="confirmExclusions()">Confirm Excluded Lots</button>
+              </div>
+            </div>
+          </div>
+          <div class="information-display-container" id="settings">
+            <div style="display: flex; width: 1fr; align-items: center;">
+              <div>
+                <p id="nameDisplay" class="nameDisplay">Levell Kensey</p>
+                <p id="emailDisplay" class="emailDisplay">lkens@uic.edu</p>
+              </div>
+              <div style="width: 70%"></div>
+              <button class="change-display-name-button">Change Display Name</button>
+            </div>
+            <div class="theme-container"> Theme
+              <form id="webThemes">
+                
+              </form>
+            </div>
+          </div>
+      </div>
+    </div>
+
+    <footer class="profile-footer">
+      <div class="footer-grid">
+        <div class="resources-footer">Resources
+          <div class="resources-footer-list">
+            <a href="resources.html">Our Resources Page</a>
+            <a href="https://parking.uic.edu/">Parking Services</a>
+            <a href="https://csrc.uic.edu/">Commuter & Off-Campus Life</a>
+            <a href="https://csrc.uic.edu/commuter-programs/facilities/">Commuter Student Resource Center</a>
+            <a href="https://maps.uic.edu/Maps">Campus Map</a>
+          </div>
+
+        </div>
+        <div class="footer-img-container">
+          <a>
+            <img src="../images/uicroadway.png" class="footer-img">
+          </a>
+        </div>
+        <div class="links-footer">Links</div>
+        <div></div>
+      </div>
+    </footer>
+
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-database-compat.js"></script>
+
+    <!-- Your shared Firebase config -->
+    <script src="/scripts/firebase-init.js"></script>
+    <script src="/scripts/profile.js"></script>
+    <script src="/scripts/firebase-header-display.js"></script>    
+  </body>
+</html>

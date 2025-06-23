@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../styles/lotfinder.css">
+    <link rel="stylesheet" href="../styles/parkpro-sharedstyles.css">
+    <!---->
+  </head>
+  <body>
+    <header>
+      <div class="logo-container">
+        <a href="homepage.html"> 
+          <img class="logo" src="../images/ParkProUIC-logo.png">
+        </a>
+      </div>
+      <div class="header-right">
+        <button><a href="parkstrat.html">Find a Lot</a></button>
+        <button><a href="tips.html">Tips</a></button>
+        <button><a href="faq.html">FAQ</a></button>
+        <button><a href="resources.html">Resources</a></button>
+        <button><a href="contact.html">Contact</a></button>
+        <a href="profile.html">
+          <img class="header-profile-button" src="../images/blankprofile.png">
+        </a>
+      </div>
+    </header>
+    <div style="display: flex">
+      <div class="lot-finder-container">
+        <div class="input-row">
+          <input type="text" placeholder="Enter a class name (optional):" class="className">
+          <select id="classSelection" class="building-dropdown">
+            <option value="N/A" class="option-null">Choose a Building (East Campus Only)</option>
+            <option value="SES">Science & Engineering South</option>
+            <option value="Science & Engineering Labs East">Science & Engineering Labs East</option>
+            <option value="Science & Engineering Labs West">Science & Engineering Labs West</option>
+            <option value="ERF">Engineering Research Facility</option>
+            <option value="CDRLC">Computer Design Research & Learning Center</option>
+            <option value="ARC">Academic & Residential Complex</option>
+            <option value="Lincoln Hall">Lincoln Hall</option>
+            <option value="Grant Hall">Grant Hall</option>
+            <option value="Douglass Hall">Douglass Hall</option>
+            <option value="Stevenson Hall">Stevenson Hall</option>
+            <option value="Burnham Hall">Burnham Hall</option>
+            <option value="Addams Hall">Addams Hall</option>
+            <option value="Taft Hall">Taft Hall</option>
+            <option value = "Henry Hall">Henry Hall</option>
+            <option value = "Jefferson Hall">Jefferson Hall</option>
+            <option value="TBH">Thomas Beckham Hall</option>
+            <option value="BSB">Behavioral Sciences Building</option>
+            <option value="Lecture Center A">Lecture Center A</option>
+            <option value="Lecture Center B">Lecture Center B</option>
+            <option value="Lecture Center C">Lecture Center C</option>
+            <option value="Lecture Center D">Lecture Center D</option>
+            <option value="Lecture Center E">Lecture Center E</option>
+            <option value="Lecture Center F">Lecture Center F</option>
+          </select>
+          <button class="add-class-button" onclick="
+            addClass();
+          ">
+            <img src="../images/plussigntrans.png">
+          </button>
+        </div>
+
+        <div class="js-class-list"></div>
+      </div>
+      <div class="excluded-lots-container">
+        <p>Are there any lots you'd like to exclude from the calculation because they're currently full, no longer available to purchase, or just a lot you don't see yourself parking in? If so, check the boxes below!</p>
+        <p style="color: red;">Make sure to press confirm before calculating, otherwise all lots will be considered!</p>
+        <form id="excludedLotsForm">
+          <input type="checkbox" id="lotItem1" name="lotItem1" value="Lot 1A">
+          <label for="lotItem1">Lot 1A</label>
+          <input type="checkbox" id="lotItem2" name="lotItem2" value="Lot 1B">
+          <label for="lotItem1">Lot 1B</label>
+          <input type="checkbox" id="lotItem3" name="lotItem3" value="Lot 3">
+          <label for="lotItem1">Lot 3</label>
+          <input type="checkbox" id="lotItem4" name="lotItem4" value="Lot 5">
+          <label for="lotItem1">Lot 5</label>
+          <input type="checkbox" id="lotItem5" name="lotItem5" value="Lot 6">
+          <label for="lotItem1">Lot 6</label>
+          <input type="checkbox" id="lotItem6" name="lotItem6" value="Lot 8">
+          <label for="lotItem1">Lot 8</label>
+          <input type="checkbox" id="lotItem7" name="lotItem7" value="Lot 9">
+          <label for="lotItem1">Lot 9</label>
+          <input type="checkbox" id="lotItem8" name="lotItem8" value="Lot 11">
+          <label for="lotItem1">Lot 11</label>
+          <input type="checkbox" id="lotItem9" name="lotItem9" value="Lot 14">
+          <label for="lotItem1">Lot 14</label>
+          <input type="checkbox" id="lotItem10" name="lotItem10" value="Lot 20">
+          <label for="lotItem1">Lot 20</label>
+          <input type="checkbox" id="lotItem11" name="lotItem11" value="Halsted Taylor Parking Structure">
+          <label for="lotItem1">Halsted/Taylor Street Parking Structure</label><br>
+          <input type="checkbox" id="lotItem12" name="lotItem12" value="Harrison Street Parking Structure">
+          <label for="lotItem1">Harrison Street Parking Structure</label><br>
+          <input type="checkbox" id="lotItem13" name="lotItem13" value="Maxwell Street Parking Structure">
+          <label for="lotItem1">Maxwell Street Parking Structure</label><br>
+        </form>
+        <button class="confirm-excluded-lots-button" onclick="confirmExclusions()">Confirm Excluded Lots</button>
+      </div>
+    </div>
+
+    <button class="calculate-average-button" onclick="calculateAvgTimes(false)">Calculate Avg Times</button>
+    <button class="calculate-most-appeared-button" onclick="calculateMostAppearedLots()">Calculate Lots Closest To Majority of Your Classes</button>
+    <button class="calculate-weighted-average-button" onclick="calculateAvgTimes(true)">Calculate Weighted Avg Times</button>
+    <div class="js-lot-banner-list"></div>
+      <footer>
+      <div class="footer-grid">
+        <div class="resources-footer">Resources
+          <div class="resources-footer-list">
+            <a href="resources.html">Our Resources Page</a>
+            <a href="https://parking.uic.edu/">Parking Services</a>
+            <a href="https://csrc.uic.edu/">Commuter & Off-Campus Life</a>
+            <a href="https://csrc.uic.edu/commuter-programs/facilities/">Commuter Student Resource Center</a>
+            <a href="https://maps.uic.edu/Maps">Campus Map</a>
+          </div>
+
+        </div>
+        <div class="footer-img-container">
+          <a>
+            <img src="../images/uicroadway.png" class="footer-img">
+          </a>
+        </div>
+        <div class="links-footer">Links
+          <div class="links-footer-list">
+            <a href="reviewtips.html">Tips Moderation (admin only)</a>
+          </div>
+        </div>
+
+      </div>
+    </footer>
+
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-database-compat.js"></script>
+
+    <!-- Your shared Firebase config -->
+    <script src="/scripts/firebase-init.js"></script>
+    <script src="/scripts/firebase-header-display.js"></script>
+
+    
+    <script>
+      async function getWalkingTime(origin, destination) {
+        const apiKey = "AIzaSyBPqV00eRg6Ch2uRO2OdJWrzelhMSbCJJU"; // 👈 paste your key here
+
+        const url = `https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=${encodeURIComponent(origin)}&destinations=${encodeURIComponent(destination)}&mode=walking&key=${apiKey}`;
+
+        console.log("Sending request to:", url);
+
+        const proxyUrl = "https://cors-anywhere.herokuapp.com/"; // bypass CORS for browser testing
+        const response = await fetch(proxyUrl + url);
+        const data = await response.json();
+
+        console.log("Raw response:", data);
+
+
+        const element = data?.rows?.[0]?.elements?.[0];
+
+        if (!element || element.status !== "OK") {
+          console.warn(`⚠️ Could not get walking time from ${origin} to ${destination}. Status: ${element?.status}`);
+          return;
+        }
+
+        const walkingTimeInSeconds = element.duration.value;
+        const walkingTimeText = element.duration.text;
+        const distanceText = element.distance.text;
+
+        console.log("🚶 Time:", walkingTimeText);     // e.g. "17 mins"
+        console.log("📏 Distance:", distanceText);   // e.g. "0.8 mi"
+
+        writeSingleData(origin, destination, Math.round((walkingTimeInSeconds / 60)));
+
+      }
+
+      //Lot 1A, Lot1B, Lot3, Lot5, Lot6, Lot8, Lot9, Lot11, Lot14, Lot20
+      const lots = ["1109 West Harrison Street", "1139 West Harrison Street", "924 South Morgan", "1135 South Morgan Street",
+      "1135 South Halsted Street", "401 South Peoria Street", "501 South Morgan Street", "1055 West Congress Parkway", 
+      "729 Rochford Street", "1101 West Taylor Street", "Harrison Street Parking Structure", 
+      "Halsted/Taylor Parking Structure", "Maxwell Street Parking Structure"];    
+
+      //(the lecture centers have addresses instead, as well as the cdrlc since it's new, and taft hall, sele)
+      const buildings = ["Science & Engineering South", "804 West Taylor St", "950 South Halsted St", 
+      "Engineering Research Facility", "850 West Taylor St", "Academic & Residential Complex", "Lincoln Hall",
+      "Grant Hall", "Burnham Hall", "825 South Halsted St", "Thomas Beckham Hall", "Behavioral Sciences Building", "805 South Morgan St",
+      "803 South Morgan St", "802 South Halsted St", "804 South Halsted St", "806 South Halsted St", "807 South Morgan St"];
+
+
+      //call function with all of these lots, one lot at a time
+    /*  async function runAllRequests() {
+        for (let lot of lots) {
+          for (let building of buildings) {
+            await getWalkingTime(lot, building);
+            await delay(1500);
+          }
+        }
+      }
+
+      runAllRequests();
+    */
+
+    </script>
+
+
+  <script src="/scripts/lotfinder.js"></script>
+  </body>
+</html>

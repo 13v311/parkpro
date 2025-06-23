@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../styles/faq.css">
+    <link rel="stylesheet" href="../styles/parkpro-sharedstyles.css">
+    <!---->
+  </head>
+  <body>
+    <header>
+      <div class="logo-container">
+        <a href="homepage.html"> 
+          <img class="logo" src="../images/ParkProUIC-logo.png">
+        </a>
+      </div>
+      <div class="header-right">
+        <button><a href="parkstrat.html">Find a Lot</a></button>
+        <button><a href="tips.html">Tips</a></button>
+        <button><a href="faq.html">FAQ</a></button>
+        <button><a href="resources.html">Resources</a></button>
+        <button><a href="contact.html">Contact</a></button>
+        <a href="profile.html">
+          <img class="header-profile-button" src="../images/blankprofile.png">
+        </a>
+        <div id="userGreeting" style="color: white"></div>
+      </div>
+    </header>
+    <div style="display: flex; justify-content: center;">
+      <p style="font-size: 40px; color: #d50032">FAQ</p>
+    </div>
+      <section class="faq-segment1">
+        <div class="faq-segmentq">
+          <div class="question-sidebar"></div>
+          <p>Q.</p>
+          <button class="dropdown-button" onclick="revealAnswer(1)"></button>
+          <button class="question-button">
+            <p>What is ParkPro?</p>
+          </button>
+
+        </div>
+      </section>
+      <section class="faq-segment2">
+        <div class="faq-segmentq">
+          <div class="question-sidebar"></div>
+          <p>Q.</p>
+          <button class="dropdown-button" onclick="revealAnswer(2)"></button>
+          <button class="question-button">
+            <p>How does ParkPro choose the best parking lots?</p>
+          </button>
+
+        </div>
+      </section>
+      <section class="faq-segment3">
+        <div class="faq-segmentq">
+          <div class="question-sidebar"></div>
+          <p>Q.</p>
+          <button class="dropdown-button" onclick="revealAnswer(3)"></button>
+          <button class="question-button">
+            <p>Do I need to create an account to use ParkPro?</p>
+          </button>
+
+        </div>
+      </section>  
+      <section class="faq-segment4">
+        <div class="faq-segmentq">
+          <div class="question-sidebar"></div>
+          <p>Q.</p>
+          <button class="dropdown-button" onclick="revealAnswer(4)"></button>
+          <button class="question-button">
+            <p>Can I use ParkPro for buildings on West Campus?</p>
+          </button>
+
+        </div>
+      </section>
+      <section class="faq-segment5">
+        <div class="faq-segmentq">
+          <div class="question-sidebar"></div>
+          <p>Q.</p>
+          <button class="dropdown-button" onclick="revealAnswer(5)"></button>
+          <button class="question-button">
+            <p>What does "Unnamed Class 1" mean?</p>
+          </button>
+
+        </div>
+      </section> 
+      <section class="faq-segment6">
+        <div class="faq-segmentq">
+          <div class="question-sidebar"></div>
+          <p>Q.</p>
+          <button class="dropdown-button" onclick="revealAnswer(6)"></button>
+          <button class="question-button">
+            <p>How can I submit a parking tip or suggestion?</p>
+          </button>
+
+        </div>
+      </section> 
+      <section class="faq-segment7">
+        <div class="faq-segmentq">
+          <div class="question-sidebar"></div>
+          <p>Q.</p>
+          <button class="dropdown-button" onclick="revealAnswer(7)"></button>
+          <button class="question-button">
+            <p>Will I see my parking tip immediately on the page?</p>
+          </button>
+
+        </div>
+      </section>  
+      <section class="faq-segment8">
+        <div class="faq-segmentq">
+          <div class="question-sidebar"></div>
+          <p>Q.</p>
+          <button class="dropdown-button" onclick="revealAnswer(8)"></button>
+          <button class="question-button">
+            <p>What data does ParkPro collect?</p>
+          </button>
+
+        </div>
+      </section>
+    <footer>
+      <div class="footer-grid">
+        <div class="resources-footer">Resources
+          <div class="resources-footer-list">
+            <a href="resources.html">Our Resources Page</a>
+            <a href="https://parking.uic.edu/">Parking Services</a>
+            <a href="https://csrc.uic.edu/">Commuter & Off-Campus Life</a>
+            <a href="https://csrc.uic.edu/commuter-programs/facilities/">Commuter Student Resource Center</a>
+            <a href="https://maps.uic.edu/Maps">Campus Map</a>
+          </div>
+
+        </div>
+        <div class="footer-img-container">
+          <a>
+            <img src="../images/uicroadway.png" class="footer-img">
+          </a>
+        </div>
+        <div class="links-footer">Links</div>
+        <div>
+          <a href="reviewtips.html">Admin Moderation Page</a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-database-compat.js"></script>
+
+    <!-- Your shared Firebase config -->
+    <script src="/scripts/firebase-init.js"></script>
+    
+    <script src="/scripts/faq.js"></script>
+    <script src="/scripts/firebase-header-display.js"></script>
+  </body>
+</html>

@@ -1,0 +1,6 @@
+#excludes any json firebase service files and the env file, as well as the huge node_modules
+.env
+*.json
+
+node_modules
+.vscode/

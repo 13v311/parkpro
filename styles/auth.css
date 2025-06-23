@@ -1,0 +1,152 @@
+
+.logo {
+  height: 70px;
+  cursor: pointer;
+
+}
+
+.logo-container {
+  margin-top: 50px;
+}
+
+body {
+  flex-direction: column;
+  display: flex;
+  box-sizing: border-box;
+  font-family: Roboto, Arial;
+  margin: 0;
+  padding: 0;
+  background-image: linear-gradient(#d50032, rgb(26, 23, 23));
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+hr {
+  margin: 0;
+}
+
+.auth-banner {
+  display: flex;
+  background-color: white;
+  border-radius: 8px;
+  width: 1000px;
+  height: 400px;
+  box-shadow: 1px 1px 4px;
+}
+
+.auth-banner-left {
+  width: 500px;
+  height: 400px;
+  margin:0;
+}
+
+.auth-banner-left p, .auth-banner-left input, .auth-banner-left button {
+  margin-left: 20px;
+}
+
+.auth-banner-right p, .auth-banner-right input, .auth-banner-right button {
+  margin-right: 20px;
+}
+
+.auth-banner-right {
+  margin: 0;
+  width: 500px;
+  height: 400px;
+  background-image: url('/images/uiclotprettyimg2.jpg');
+  background-size: cover;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+.wrapper-auth-banner-right {
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
+}
+
+.auth-banner-bottom {
+  height: 40px;
+  display: flex;
+  width: 900px;
+  justify-content: left;
+  align-items: center;
+  font-weight: 700;
+}
+
+.auth-banner input {
+  border-radius: 30px;
+  height: 35px;
+  width: 300px;
+}
+
+.auth-banner-left input {
+  padding: 2px 8px;
+  border: none;
+  background-color: white;
+  box-shadow: 0 0 0 2px transparent, 0 0 0 2px #d50032; /* gradient effect here */
+}
+
+.auth-banner-right input {
+  padding: 2px 8px;
+}
+
+.login-button {
+  cursor: pointer;
+  border-radius: 25px;
+  text-align: center;
+  width: 300px;
+  background: linear-gradient(to right, #d50032, rgb(26, 23, 23));
+  color: white;
+  font-weight: 600;
+  border: none;
+  height: 40px;
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.signup-button {
+  cursor: pointer;
+  border-radius: 25px;
+  text-align: center;
+  height: 40px;
+  width: 300px;
+  color: black;
+  background: linear-gradient(to right, white, #d50032);
+  font-weight: 600;
+  border: none;
+  font-size: 16px;
+  margin-bottom: 20px;
+
+}
+
+.forgot-password-button {
+  display: block;
+}
+
+
+.div-header {
+  margin-top: 50px; 
+  font-weight: 500; 
+  font-size: 25px; 
+  margin-bottom: 0;
+}
+
+.login-password-input, 
+.signup-password-input {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.forgot-password-button {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  font-style: italic;
+}
+
+.authMessage {
+  font-size: 18px;
+  color: white;
+  font-style: italic;
+}

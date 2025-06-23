@@ -1,0 +1,138 @@
+/* these are styles such as the header and footer styles that you'll find on almost every page of the website */
+header {
+  background-color: #d50032;
+  height: 75px;
+  display: flex;
+  flex-direction: row;
+  box-shadow: 0.5px 0.5px 7px;
+  margin-bottom: 30px;
+}
+
+header.full-header {
+  margin-bottom: 0;
+}
+
+.header-right {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-left: 500px;
+}
+
+.header-right button {
+  font-family: Roboto, Arial;
+  font-weight: 700;
+  border:none;
+  background-color: #d50032;
+  color: white;
+  padding: 9px 5px;
+  font-size: 16px;
+  height: 50px;
+  width: 100px;
+  cursor: pointer;
+  transition: 0.15;
+}
+
+.header-right div {
+  width: 50px;
+}
+
+.header-right button:hover {
+  font-size: 18px;
+  text-shadow: 2px 2px 5px black;
+}
+
+.header-profile-button {
+  height: 50px;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+body {
+  box-sizing: border-box;
+  font-family: Roboto, Arial;
+  margin: 0;
+  padding: 0;
+  background-image: linear-gradient(white,rgba(211, 211, 211, 0.527));
+  min-height: 100vh;
+}
+
+
+.logo {
+  height: 70px;
+  cursor: pointer;
+}
+
+.logo-container {
+  margin: 0;
+  padding: 0;
+}
+
+.footer-img {
+  display: block;
+  height: 260px;
+  margin: 0;
+  border-radius: 250px;
+}
+
+
+footer {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  column-width: 1fr 1fr 1fr;
+  width: 100%;
+
+  font-family: Roboto, Arial;
+  color: white;
+  background-color: black;
+  height: 260px;
+  margin-top: 600px;
+}
+
+footer.profile-footer {
+  margin-top: 0;
+}
+
+.footer-grid {
+  font-size: 30px;
+  font-weight: 700;
+  display: flex;
+
+}
+
+.footer-img-container {
+  padding-left: 200px;
+  padding-right: 200px;
+  height: 250px;
+}
+
+.resources-footer {
+  padding-top: 20px;
+  text-align: center;
+}
+
+.resources-footer-list,
+.links-footer-list {
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.resources-footer a, 
+.links-footer a {
+  color: lightgray;
+  height: 10px;
+  margin-bottom: 20px;
+  font-size: 12px;
+  text-align: center;
+}
+
+.links-footer {
+  padding-top: 20px;
+  padding-left: 50px;
+  text-align: center;
+}

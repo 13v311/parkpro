@@ -1,0 +1,82 @@
+body {
+  box-sizing: border-box;
+  font-family: Roboto, Arial;
+  margin: 0;
+  padding: 0;
+  background-image: linear-gradient(#d50032, rgb(216, 216, 216));
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.strategies-section {
+  display: flex;
+}
+
+.strategy-container {
+  display: flex;
+  width: 1fr;
+  margin: 10px;
+  flex-direction: column;
+  background-color: white;
+  padding: 10px 30px;
+  border-radius: 8px;
+}
+
+.strategy-title {
+  font-size: 30px;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.pros-and-cons-container {
+  display: flex;
+}
+
+.pros-title, .cons-title {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.pros-title {
+  color: rgb(64, 240, 64);
+  text-shadow: 1px 1px 1px black;
+}
+
+.cons-title {
+  color: rgb(243, 55, 55);
+  text-shadow: 1px 1px 1px black;
+}
+
+.pros-and-cons-container p {
+  padding: 10px;
+  margin: 0;
+}
+
+.pros-container, .cons-container {
+  display: flex;
+  width: 1fr;
+  flex-direction: column;
+}
+
+.calculate-average-button,
+.calculate-most-appeared-button,
+.calculate-weighted-average-button {
+  cursor: pointer;
+  background-color: #1efc55;
+  margin: 20px;
+  padding: 14px 45px;
+  border: none;
+  font-weight: bold;
+  box-shadow: 0px 0.5px 3px;
+}
+
+.logo {
+  height: 70px;
+  cursor: pointer;
+
+}
+
+.logo-container {
+  margin-top: 50px;
+}

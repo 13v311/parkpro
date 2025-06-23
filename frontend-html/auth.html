@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/styles/auth.css">
+  </head>
+
+  <body>
+      <div class="auth-banner">
+          <div class="auth-banner-left">
+            <p class="div-header" style="text-shadow: 1px 1px 1px #d50032">Login or...</p>
+            <p style="margin-bottom: 20px; font-size: 13px">Please fill in your basic info</p>
+            <input id="login-email-input" class="login-email-input" placeholder="UIC Email">
+            <input id="login-password-input" class="login-password-input" placeholder="Password">
+            <button class="login-button" onclick="login()">LOGIN</button>
+            <button class="forgot-password-button" onclick="forgotPassword()">Forgot password?</button>
+            <button class="logout-button" onclick="logout()">Log out</button>
+          </div>
+          <hr>
+          <div class="auth-banner-right">
+            <div class="wrapper-auth-banner-right">
+              <p class="div-header" style="color: #d50032; text-shadow: 1px 1px 2px rgb(26, 23, 23);">Sign Up!</p>
+              <p style="margin-bottom: 20px; font-size: 13px">Using your UIC email address</p>
+              <input id="signup-email-input" class="signup-email-input" placeholder="UIC Email">
+              <input id="signup-password-input" class="signup-password-input" placeholder="Password">
+              <button class="signup-button" onclick="signup()">SIGN UP</button>
+            </div>
+          </div>
+        </div>  
+    <div class="logo-container">
+      <a href="homepage.html"> 
+        <img class="logo" src="/images/ParkProUIC-logo.png">
+      </a>
+    </div>  
+    <p id="authMessage" class="authMessage"></p>  
+  </body>
+
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+
+    <!-- Your shared Firebase config -->
+    <script src="/scripts/firebase-init.js"></script>
+    
+    <script src="/scripts/auth.js"></script>
+</html>

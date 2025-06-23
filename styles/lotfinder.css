@@ -1,0 +1,231 @@
+.lot-finder-container {
+  display: flex;
+  flex-direction : column;
+  width: 550px;
+  margin-right: 150px;
+  margin-left: 20px;
+  box-sizing: content-box;
+  padding: 5px;
+  background-color: white;
+  box-shadow: 1px 1px 4px;
+}
+
+.add-class-button {
+  margin-left: 7px;
+  height: 40px;
+  background-color: green;
+  border: none;
+  border-radius: 1px;
+}
+
+.add-class-button img {
+  height: 30px;
+  filter: invert(100%);
+  cursor: pointer;
+}
+
+select {
+  height: 40px;
+  margin-left: 7px;
+  border-radius: 0.5px;
+}
+
+p {
+  font-size: 13px;
+  margin: 0;
+  padding: 2px;
+}
+
+hr {
+  margin: 0;
+}
+
+option {
+}
+
+.option-null {
+  color: lightgray;
+}
+
+.lot-finder-container input {
+  height: 36px;
+  width: 180px;
+  padding: 0px 5px;
+}
+
+.input-row {
+  display: flex;
+  justify-content: center;
+}
+
+.excluded-lots-container {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  width: 550px;
+}
+
+.excluded-lots-container p {
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+
+.excluded-lots-container label {
+  font-size: 18px;
+  margin-right: 34px;
+}
+
+.confirm-excluded-lots-button {
+  width: 250px;
+  cursor: pointer;
+  background-color: #1efc55;
+  margin: 20px;
+  padding: 14px 45px;
+  border: none;
+  font-weight: bold;
+  box-shadow: 0px 0.5px 3px;
+}
+
+.js-class-list {
+  margin-top: 10px;
+  display: block;
+  width: 100%;
+}
+
+.js-class-list div {
+  display: flex;
+  flex-direction: row;
+  justify-content:space-between;
+  background-color: lightgray;
+  height: 40px;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.js-class-list div p {
+  display: inline-block;
+  padding: 0px 10px;
+}
+
+.js-class-list div button {
+  background-color: gray;
+  border: none;
+  border-radius: 1px;
+  height: 40px;
+}
+
+.js-class-list div button:hover {
+  background-color: red;
+}
+
+.js-class-list div button img {
+  height: 36px;
+  cursor: pointer;
+  filter: invert(100%);
+}
+
+.calculate-average-button,
+.calculate-most-appeared-button,
+.calculate-weighted-average-button {
+  cursor: pointer;
+  background-color: #1efc55;
+  margin: 20px;
+  padding: 14px 45px;
+  border: none;
+  font-weight: bold;
+  box-shadow: 0px 0.5px 3px;
+}
+
+.lot-banner {
+  background-color: white;
+  border-radius: 5px;
+  width: 900px;
+  height: 320px;
+  margin: 30px;
+  box-shadow: 1px 1px 4px;
+}
+
+.lot-banner-top {
+  display: flex;
+  height: 280px;
+}
+
+.lot-picture {
+  height: 280px;
+  margin-top: 0.1px;
+  width: 260px;
+  border-top-left-radius: 5px;
+  box-shadow: 0.1px 0.1px 1.5px;
+}
+
+.lot-banner-right {
+  padding: 0px 15px;
+  width: 205px;
+}
+
+.lot-banner-right p {
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.lot-banner-right p.stats-header {
+  font-weight: 400;
+  font-size: 13px;
+  color: gray;
+  padding-top: 15px;
+}
+
+.lot-banner-bottom {
+  height: 40px;
+  display: flex;
+  width: 900px;
+  justify-content: left;
+  align-items: center;
+  font-weight: 700;
+
+}
+
+.lot-banner-bottom img {
+  height: 28px;
+  width: 28px;
+  margin-bottom: 5px;
+  cursor: pointer;
+}
+
+.lot-banner-bottom img:after {
+  filter: saturate(100%)
+}
+ 
+.lot-banner-bottom-right {
+  height: 40px;
+  display: flex;
+  width: 750px;
+  justify-content: right;
+  align-items: center;
+  
+}
+
+.lot-banner-button {
+  cursor: pointer;
+  background-color: #d50032;
+  color: white;
+  font-weight: bold;
+  padding: 5px;
+  margin: 8px;
+  border-radius: 1px;
+  border: none;
+}
+
+.lot-banner-button:hover {
+  box-shadow: 1px 1px 4px;
+}
+
+.location-container {
+  display: flex;
+  align-content: center;
+}
+
+.location-container img {
+  height: 20px;
+}

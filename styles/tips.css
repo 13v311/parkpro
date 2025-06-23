@@ -1,0 +1,97 @@
+.tip-header {
+  font-size: 30px;
+  font-weight: 700;
+  color: #d50032;
+  margin-left: 475px;
+}
+
+
+.tip-submission-container {
+  display: flex;
+  padding: 20px;
+  background-color: white;
+  width: 550px;
+  margin: 0 auto; /* centers automatically */
+  border-radius: 20px;
+  margin-bottom: 20px;
+  box-shadow: 1px 1px 5px;
+}
+
+.tip-submission-container p {
+  font-size: 11px;
+  text-align: center;
+}
+
+.tip-submission-container p.submission-header-text {
+  font-weight: bold;
+  font-size: 20px;
+  text-align: center;
+}
+
+.tip-submission-container p.input-header {
+  font-size: 12px;
+  font-weight: 500;
+  text-align: left;
+}
+
+.email-and-name-container {
+  padding-right: 80px;
+}
+
+.email-and-name-container, .message-and-affiliation-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 25px;
+
+}
+
+.email-and-name-container div, .message-and-affiliation-container div {
+  display: inline-block;
+}
+
+.tip-submission-container input {
+  height: 20px;
+}
+
+.tip-submission-container .message-input {
+  height: 120px;
+  resize:none;
+  font-size: 12px;
+  width: 250px;
+}
+
+.button-container {
+  display: flex;
+  align-items: center;
+}
+
+.submission-button {
+  cursor: pointer;
+  background-color: #fc1e52;
+  margin: 0 auto;
+  padding: 14px 45px;
+  border: none;
+  font-weight: bold;
+  box-shadow: 0px 0.5px 3px;
+}
+
+/* .submission-button::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  transform: scale(0);
+  background: rgba(255, 255, 255, 0.5);
+  animation: ripple 0.6s linear;
+  pointer-events: none;
+}
+
+@keyframes ripple {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
+} */
+
+.submission-button:hover {
+  background-color: #d50032;
+}

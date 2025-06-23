@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../styles/tips.css">
+    <link rel="stylesheet" href="../styles/parkpro-sharedstyles.css">
+    <!---->
+  </head>
+  <body>
+    <header>
+      <div class="logo-container">
+        <a href="homepage.html"> 
+          <img class="logo" src="../images/ParkProUIC-logo.png">
+        </a>
+      </div>
+      <div class="header-right">
+        <button><a href="parkstrat.html">Find a Lot</a></button>
+        <button><a href="tips.html">Tips</a></button>
+        <button><a href="faq.html">FAQ</a></button>
+        <button><a href="resources.html">Resources</a></button>
+        <button><a href="contact.html">Contact</a></button>
+        <a href="profile.html">
+          <img class="header-profile-button" src="../images/blankprofile.png">
+        </a>
+        <div id="userGreeting" style="color: white"></div>
+      </div>
+    </header>
+    <div class="tips-container">
+      <p>Tips & Insights Archive</p>
+      <p>*Updated as of 5/27/2025</p>
+      <!--dropdowns similar to the faq will go here, but the tips will not have the same css style as faq ofc-->
+    </div>
+    <p class="tip-header">Want to submit your own tip?</p>
+    <div class="tip-submission-container">
+      <div>
+        <p class="submission-header-text">Submit a tip or insight about parking at UIC down below for a chance to be featured on this page! We'd love to hear from you.</p>
+        <p>*Your email is needed just so you can be notified that your tip has been submitted and (potentially) posted!</p>
+        <div class="email-and-name-container">
+          <div>
+            <p class="input-header">Email</p> <!--make inline-->
+            <input placeholder="Enter email" class="email-input" id="emailInput">
+          </div>
+          <div>
+            <p class="input-header">Name</p>
+            <input placeholder="Enter name (optional)" class="name-input" id="nameInput">
+          </div>
+        </div>
+        <div class="message-and-affiliation-container">
+          <div>
+            <p class="input-header">Affiliation</p>
+            <select id="uicAffiliation">
+              <option value="N/A">Please choose your affiliation with UIC</option>
+              <option>UIC Faculty</option>
+              <option>UIC Staff</option>
+              <option>Undergraduate Student</option>
+              <option>Graduate Student</option>
+              <option>Alumni</option>
+              <option>Visitor</option>
+              <option>Other</option>
+            </select>
+          </div>
+
+          <div>
+            <p class="input-header">Message</p>
+            <textarea placeholder="Write your parking tip..." class="message-input" id="tipInput"></textarea>
+          </div>
+
+        </div>
+        <div class="button-container">
+          <button class="submission-button" onclick="tipSubmit()">SUBMIT</button>
+        </div>
+      </div>
+    </div>
+    <footer>
+      <div class="footer-grid">
+        <div class="resources-footer">Resources
+          <div class="resources-footer-list">
+            <a href="resources.html">Our Resources Page</a>
+            <a href="https://parking.uic.edu/">Parking Services</a>
+            <a href="https://csrc.uic.edu/">Commuter & Off-Campus Life</a>
+            <a href="https://csrc.uic.edu/commuter-programs/facilities/">Commuter Student Resource Center</a>
+            <a href="https://maps.uic.edu/Maps">Campus Map</a>
+          </div>
+
+        </div>
+        <div class="footer-img-container">
+          <a>
+            <img src="../images/uicroadway.png" class="footer-img">
+          </a>
+        </div>
+        <div class="links-footer">Links</div>
+        <div></div>
+      </div>
+    </footer>
+
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-database-compat.js"></script>
+
+    <!-- Your shared Firebase config -->
+    <script src="/scripts/firebase-init.js"></script>
+    <script src="/scripts/firebase-header-display.js"></script>
+    <script src="/scripts/tips.js"></script>
+    
+  </body>
+</html>
