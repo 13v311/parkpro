@@ -1,3 +1,5 @@
+import dotenv from 'dotenv';
+dotenv.config();
 import admin from 'firebase-admin';
 import fetch from 'node-fetch';
 import serviceAccount from './parkprouic-firebase-adminsdk-fbsvc-aacc860f33.json' assert {type: "json"};
@@ -33,7 +35,7 @@ function writeSingleData(origin, destination, minutes) {
 }
 
   async function getWalkingTime(origin, destination) {
-    const apiKey = "AIzaSyBPqV00eRg6Ch2uRO2OdJWrzelhMSbCJJU"; // 👈 paste your key here
+    const apiKey = process.env.GOOGLE_API_KEY;
 
     const url = `https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=${encodeURIComponent(origin)}&destinations=${encodeURIComponent(destination)}&mode=walking&key=${apiKey}`;
 
