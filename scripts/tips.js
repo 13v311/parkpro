@@ -19,12 +19,17 @@ function tipSubmit() {
   const affiliationOptions = document.getElementById("uicAffiliation").options;
   const affiliation = affiliationOptions[affiliationIndex].value;
 
+  const subjectIndex = document.getElementById("tipSubject").selectedIndex;
+  const subjectOptions = document.getElementById("tipSubject").options;
+  const subject = subjectOptions[subjectIndex].value;
+
   const tipData = {
     name,
     email,
     affiliation,
     tip,
     timestamp,
+    subject,
     status: "pending"
   };
 
@@ -43,6 +48,11 @@ function tipSubmit() {
 
   if(affiliation === 'N/A') {
     alert('You need to pick an affiliation.');
+    return;
+  }
+
+  if(subject === 'N/A') {
+    alert('You need to pick a subject.');
     return;
   }
 
@@ -91,3 +101,50 @@ firebase.auth().onAuthStateChanged((user) => {
     greetingDiv.textContent = '';
   }
 });
+
+
+async function revealSubject(subject, segmentNumber) {
+  const snapshot = await firebase.database().ref('tips').once('value');
+  const allTipsData = snapshot.val();
+  const allTips = Object.keys(allTipsData);
+  const container = document.querySelector(`.tip-segment${segmentNumber}`);
+  var exists = false;
+  while(container.querySelector('.tip-container')) {
+    container.querySelector('.tip-container')?.remove();
+    container.querySelector('.dropdown-button')?.classList.remove('rotated');
+    exists = true;
+  }
+  if(exists) {return;}
+
+  container.querySelector('.dropdown-button')?.classList.add('rotated');
+  const segment = container.querySelector('.tip-segmentb');
+
+  for(var tipId of allTips) {
+    let tip = allTipsData[tipId];
+    if(tip.status === 'approved' && tip.subject === subject) {
+
+
+      const timestamp = tip.timestamp.substring(0, 10);
+
+
+
+
+      const html = `<div class="tip-container">
+      <div class="tip-name-and-affiliation-container">
+        <p style="width: 50%; font-weight: 500">${tip.name}</p>
+        <p></p>
+        <p style="width: 50%; text-align: right;">${tip.affiliation}</p>
+      </div>
+      <div class="tip-paragraph-container">
+        <p>"${tip.tip}"</p>
+      </div>
+      <div class="tip-date-container">
+        <p style="width: 100%; text-align: right;"><i>${timestamp}</i></p>
+      </div>
+    </div>
+      `;
+
+      segment.innerHTML += html;
+    }
+  }
+}

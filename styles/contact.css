@@ -1,0 +1,55 @@
+.profile-section {
+  display: flex;
+  flex-direction: column;
+  margin-left: 10%;
+  padding: 5px 25px;
+}
+
+.profile-photo-container {
+  display: flex;
+}
+
+.profile-photo-container img {
+  background-color: white;
+  padding: 7px;
+  border-radius: 10px;
+}
+
+.icons-container img {
+  padding: 4px;
+}
+
+.title-section {
+  text-align: center;
+  width: 100%;
+  margin-top: 20px;
+  margin-bottom: 15px;
+}
+
+.title-section p {
+  font-size: 30px;
+  font-weight: 700;
+  color: #d50032;
+}
+
+.email-icon, 
+.linkedin-icon {
+  width: 100px;
+}
+
+.profile-photo {
+  width: 250px;
+  box-shadow: 1px 1px 5px;
+  border-radius: 7px
+}
+
+.description-container {
+  display: flex;
+  background-color: white;
+  border-radius: 20px;
+  font-size: 20px;
+  font-weight: 500;
+  margin-left: 20px;
+  padding: 7px;
+  text-align: center;
+}

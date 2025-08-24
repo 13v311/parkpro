@@ -11,63 +11,144 @@
   </head>
   <body>
     <header>
-      <div class="logo-container">
+      <div class="header-left">
+        <p>Menu</p>
+        <img src="../images/menu-icon.png" class="menu-click">
+      </div>
+      <div class="header-mid">
         <a href="homepage.html"> 
-          <img class="logo" src="../images/ParkProUIC-logo.png">
+          <img class="logo" src="../images/newparkpro-logo.png">
         </a>
       </div>
       <div class="header-right">
-        <button><a href="parkstrat.html">Find a Lot</a></button>
-        <button><a href="tips.html">Tips</a></button>
-        <button><a href="faq.html">FAQ</a></button>
-        <button><a href="resources.html">Resources</a></button>
-        <button><a href="contact.html">Contact</a></button>
-        <a href="profile.html">
+        <a class="profile-link" href="profile.html" style="display: block">
           <img class="header-profile-button" src="../images/blankprofile.png">
         </a>
+        <a class="auth-link" href="auth.html">
+          <img class="header-profile-button" src="../images/blankprofile.png">
+        </a>
+        <div id="userGreeting" style="color: white; overflow-wrap: break-word; padding: 5px;"></div>
       </div>
     </header>
+      <nav class="nav-sidebar">
+        <div class="nav-home">
+          <a href="homepage.html">
+            <img src="../images/covered-lot-icon.png">
+            <p>Home</p>
+          </a>
+        </div>
+        <div class="nav-lotfinder">
+          <a href="parkstrat.html">       
+            <img src="../images/parkpro-car-logo.png">
+            <p>Find a Lot</p>
+          </a>
+        </div>
+        <div class="nav-tips">
+          <a href="tips.html">
+            <img src="../images/drivers-license-icon.png">
+            <p>Tips From Others</p>
+          </a>
+        </div>
+        <div class="nav-faq">
+          <a href="faq.html">
+            <img src="../images/faq-icon.png">
+            <p>FAQ</p>
+          </a>
+        </div>
+        <div class="nav-profile">
+          <a href="profile.html">
+            <img src="../images/blankprofile.png">
+            <p>Profile/Signup/Login</p>
+          </a>
+        </div>
+        <div class="nav-resources">
+          <a href="resources.html">
+            <img src="../images/human-resource-icon.png">
+            <p>Resources</p>
+          </a>
+        </div>
+        <div class="nav-contact">
+          <a href="contact.html">
+            <img src="../images/email-icon.png">
+            <p>Contact</p>
+          </a>
+        </div>
+        </nav>
+    <section class="instructional-section">
+      <p style="font-size: 24px; text-align: center; margin-bottom: 10px">Get your class schedule handy!</p>
+      <div class="majority-instructions">
+        <p style="font-size: 18px;">1. From the dropdown menu, choose the building  your class is located in.-- 
+          (optional) you can give the class a name if you'd like (i.e., ENGL 161).</p>
+        <p style="font-size: 18px;">2. Click the green plus icon to append to your list of classes, and 
+          it'll show up in the box!</p>
+        <p style="font-size: 18px;">3. Repeat this for each of your classes (incl. lecture, discussion, lab, etc.).</p>
+        <p style="font-size: 18px;">4. Exclude any unwanted lots in the box to the right.</p>
+        <p style="font-size: 18px;">5. Upon completion, press the calculate button and scroll down to view a list of recommended parking lots and an interactive map with markers for your classes and recommended lots.</p>
+      </div>
+      <div class="weighted-instructions">
+        <p style="font-size: 18px;">1. From the dropdown menu, choose the building  your class is located in.-- 
+          (optional) you can give the class a name if you'd like (i.e., ENGL 161).</p>
+        <p style="font-size: 18px;">2. Click the green plus icon to append to your list of classes, and 
+          it'll show up in the box!</p>
+        <p style="font-size: 18px;">3. Repeat this for each of your classes (incl. lecture, discussion, lab, etc.).</p>
+        <p style="font-size: 18px;">4. Using the slider next to each class, rank each one (1 being the lowest priority) according to start time sensitivity--multiple classes can
+          have the same rankings.
+        </p>
+        <p style="font-size: 18px;">5. Exclude any unwanted lots in the box to the right.</p>
+        <p style="font-size: 18px;">6. Upon completion, press the calculate button and scroll down to view a list of recommended parking lots and an interactive map with markers for your classes and recommended lots.</p>
+      </div>
+      <p class="weighted-instructions" style="font-size: 18px; text-align: center;"></p>
+
+    </section>
     <div style="display: flex">
       <div class="lot-finder-container">
-        <div class="input-row">
+        <div class="input-row" style="flex-wrap: wrap">
           <input type="text" placeholder="Enter a class name (optional):" class="className">
           <select id="classSelection" class="building-dropdown">
             <option value="N/A" class="option-null">Choose a Building (East Campus Only)</option>
-            <option value="SES">Science & Engineering South</option>
-            <option value="Science & Engineering Labs East">Science & Engineering Labs East</option>
-            <option value="Science & Engineering Labs West">Science & Engineering Labs West</option>
-            <option value="ERF">Engineering Research Facility</option>
-            <option value="CDRLC">Computer Design Research & Learning Center</option>
             <option value="ARC">Academic & Residential Complex</option>
-            <option value="Lincoln Hall">Lincoln Hall</option>
-            <option value="Grant Hall">Grant Hall</option>
-            <option value="Douglass Hall">Douglass Hall</option>
-            <option value="Stevenson Hall">Stevenson Hall</option>
-            <option value="Burnham Hall">Burnham Hall</option>
             <option value="Addams Hall">Addams Hall</option>
-            <option value="Taft Hall">Taft Hall</option>
-            <option value = "Henry Hall">Henry Hall</option>
-            <option value = "Jefferson Hall">Jefferson Hall</option>
-            <option value="TBH">Thomas Beckham Hall</option>
             <option value="BSB">Behavioral Sciences Building</option>
+            <option value="Burnham Hall">Burnham Hall</option>
+            <option value="CDRLC">Computer Design Research & Learning Center</option>
+            <option value="Douglass Hall">Douglass Hall</option>
+            <option value="ERF">Engineering Research Facility</option>
+            <option value="Grant Hall">Grant Hall</option>
+            <option value="Henry Hall">Henry Hall</option>
+            <option value="Jefferson Hall">Jefferson Hall</option>
             <option value="Lecture Center A">Lecture Center A</option>
             <option value="Lecture Center B">Lecture Center B</option>
             <option value="Lecture Center C">Lecture Center C</option>
             <option value="Lecture Center D">Lecture Center D</option>
             <option value="Lecture Center E">Lecture Center E</option>
             <option value="Lecture Center F">Lecture Center F</option>
+            <option value="Lincoln Hall">Lincoln Hall</option>
+            <option value="Science & Engineering Labs East">Science & Engineering Labs East</option>
+            <option value="Science & Engineering Labs West">Science & Engineering Labs West</option>
+            <option value="SES">Science & Engineering South</option>
+            <option value="Stevenson Hall">Stevenson Hall</option>
+            <option value="TBH">Thomas Beckham Hall</option>
+            <option value="Taft Hall">Taft Hall</option>
+            <option value="Art & Exhibition Hall">Art & Exhibition Hall</option>
+            <option value="ETMSW">Education, Theatre, Music & Social Work</option>
+            <option value="Physical Education Building">Physical Education Building</option>
           </select>
           <button class="add-class-button" onclick="
             addClass();
           ">
             <img src="../images/plussigntrans.png">
           </button>
+          <input
+           type="file" 
+           id="icsFileInput"
+           accept=".ics"
+           style="margin: 2px;">
         </div>
 
         <div class="js-class-list"></div>
       </div>
       <div class="excluded-lots-container">
-        <p>Are there any lots you'd like to exclude from the calculation because they're currently full, no longer available to purchase, or just a lot you don't see yourself parking in? If so, check the boxes below!</p>
+        <p>Select lots you don't want to see in your calculation (e.g., they're currently full, no longer available to purchase, or just a lot you don't see yourself parking in).</p>
         <p style="color: red;">Make sure to press confirm before calculating, otherwise all lots will be considered!</p>
         <form id="excludedLotsForm">
           <input type="checkbox" id="lotItem1" name="lotItem1" value="Lot 1A">
@@ -98,13 +179,23 @@
           <label for="lotItem1">Maxwell Street Parking Structure</label><br>
         </form>
         <button class="confirm-excluded-lots-button" onclick="confirmExclusions()">Confirm Excluded Lots</button>
+        <p class="excluded-lot-list">Excluded Lot(s): None Selected</p>
       </div>
     </div>
 
     <button class="calculate-average-button" onclick="calculateAvgTimes(false)">Calculate Avg Times</button>
     <button class="calculate-most-appeared-button" onclick="calculateMostAppearedLots()">Calculate Lots Closest To Majority of Your Classes</button>
     <button class="calculate-weighted-average-button" onclick="calculateAvgTimes(true)">Calculate Weighted Avg Times</button>
+    <p style="text-align: center; font-size: 20px; margin: 50px 0px">Your results will show below!</p>
+    <button class="clear-results-button" onclick="clearResults()">Clear Results</button>
+    <p style="font-style: italic; font-size: 16px; color: red; margin: 10px;">(FOR THOSE WHO PLAN TO BUY A PARKING PASS): Once your results load, pressing the red button which says "Link to Parking Application" will allow you to
+      apply for a parking assignment that you will keep for both semesters (unless changed) and will be added to your student tuition once completed. Once you're on the 
+      application website, make sure to put the lot you chose as your first option under 'Lot Choice'!</p>
     <div class="js-lot-banner-list"></div>
+      <div id="map"></div>
+      <div class="map-add-info">
+        <p><i>Note: Google Maps has slightly different addresses for some buildings compared to the addresses listed on the UIC Campus Map.</i></p>
+      </div>
       <footer>
       <div class="footer-grid">
         <div class="resources-footer">Resources
@@ -125,9 +216,10 @@
         <div class="links-footer">Links
           <div class="links-footer-list">
             <a href="reviewtips.html">Tips Moderation (admin only)</a>
+            <a href="auth.html">Log In/Log Out</a>
+            <a href="https://icons8.com/icons">Icons Website (Where We Find Icons To Use)</a>
           </div>
         </div>
-
       </div>
     </footer>
 
@@ -139,6 +231,9 @@
     <!-- Your shared Firebase config -->
     <script src="/scripts/firebase-init.js"></script>
     <script src="/scripts/firebase-header-display.js"></script>
+
+    <!-- Google Maps Javascript API Key-->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAUvOTbVeDYLZAO8LrzvU19i-tBNVsSueo"></script>
 
 
   <script src="/scripts/lotfinder.js"></script>

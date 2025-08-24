@@ -11,23 +11,69 @@
   </head>
   <body>
     <header>
-      <div class="logo-container">
+      <div class="header-left">
+        <p>Menu</p>
+        <img src="../images/menu-icon.png" class="menu-click">
+      </div>
+      <div class="header-mid">
         <a href="homepage.html"> 
-          <img class="logo" src="../images/ParkProUIC-logo.png">
+          <img class="logo" src="../images/newparkpro-logo.png">
         </a>
       </div>
       <div class="header-right">
-        <button><a href="parkstrat.html">Find a Lot</a></button>
-        <button><a href="tips.html">Tips</a></button>
-        <button><a href="faq.html">FAQ</a></button>
-        <button><a href="resources.html">Resources</a></button>
-        <button><a href="contact.html">Contact</a></button>
-        <a href="profile.html">
+        <a class="profile-link" href="profile.html" style="display: block">
           <img class="header-profile-button" src="../images/blankprofile.png">
         </a>
-        <div id="userGreeting" style="color: white"></div>
+        <a class="auth-link" href="auth.html">
+          <img class="header-profile-button" src="../images/blankprofile.png">
+        </a>
+        <div id="userGreeting" style="color: white; overflow-wrap: break-word; padding: 5px;"></div>
       </div>
     </header>
+      <nav class="nav-sidebar">
+        <div class="nav-home">
+          <a href="homepage.html">
+            <img src="../images/covered-lot-icon.png">
+            <p>Home</p>
+          </a>
+        </div>
+        <div class="nav-lotfinder">
+          <a href="parkstrat.html">       
+            <img src="../images/parkpro-car-logo.png">
+            <p>Find a Lot</p>
+          </a>
+        </div>
+        <div class="nav-tips">
+          <a href="tips.html">
+            <img src="../images/drivers-license-icon.png">
+            <p>Tips From Others</p>
+          </a>
+        </div>
+        <div class="nav-faq">
+          <a href="faq.html">
+            <img src="../images/faq-icon.png">
+            <p>FAQ</p>
+          </a>
+        </div>
+        <div class="nav-profile">
+          <a href="profile.html">
+            <img src="../images/blankprofile.png">
+            <p>Profile/Signup/Login</p>
+          </a>
+        </div>
+        <div class="nav-resources">
+          <a href="resources.html">
+            <img src="../images/human-resource-icon.png">
+            <p>Resources</p>
+          </a>
+        </div>
+        <div class="nav-contact">
+          <a href="contact.html">
+            <img src="../images/email-icon.png">
+            <p>Contact</p>
+          </a>
+        </div>
+        </nav>
     <div style="display: flex; justify-content: center;">
       <p style="font-size: 40px; color: #d50032">FAQ</p>
     </div>
@@ -136,9 +182,12 @@
             <img src="../images/uicroadway.png" class="footer-img">
           </a>
         </div>
-        <div class="links-footer">Links</div>
-        <div>
-          <a href="reviewtips.html">Admin Moderation Page</a>
+        <div class="links-footer">Links
+          <div class="links-footer-list">
+            <a href="reviewtips.html">Tips Moderation (admin only)</a>
+            <a href="auth.html">Log In/Log Out</a>
+            <a href="https://icons8.com/icons">Icons Website (Where We Find Icons To Use)</a>
+          </div>
         </div>
       </div>
     </footer>

@@ -61,6 +61,8 @@ option {
 .excluded-lots-container {
   display: flex;
   flex-direction: column;
+  background-color: white;
+  box-shadow: 1px 1px 4px;
   padding: 10px;
   width: 550px;
 }
@@ -85,6 +87,11 @@ option {
   border: none;
   font-weight: bold;
   box-shadow: 0px 0.5px 3px;
+  transition: background-color 0.5s ease;
+}
+
+.excluded-lot-list {
+  color: rgb(255, 117, 117);
 }
 
 .js-class-list {
@@ -125,7 +132,6 @@ option {
   filter: invert(100%);
 }
 
-.calculate-average-button,
 .calculate-most-appeared-button,
 .calculate-weighted-average-button {
   cursor: pointer;
@@ -135,6 +141,29 @@ option {
   border: none;
   font-weight: bold;
   box-shadow: 0px 0.5px 3px;
+  transition: background-color 0.5s ease;
+}
+
+.calculate-most-appeared-button:hover,
+.calculate-weighted-average-button:hover,
+.confirm-excluded-lots-button:hover {
+  background-color: #16b33d;
+}
+
+.clear-results-button {
+  cursor: pointer;
+  background-color: #1efc;
+  font-size: 14px;
+  padding: 10px;
+  margin: 15px;
+  border: none;
+  box-shadow: 0px 0.5px 3px;
+  font-weight: bold;
+  transition: background-color 0.5s ease;
+}
+
+.clear-results-button:hover {
+  background-color: rgba(13, 163, 173, 0.8);
 }
 
 .lot-banner {
@@ -228,4 +257,40 @@ option {
 
 .location-container img {
   height: 20px;
+}
+
+
+.lot-attribute-list p {
+  font-size: 12.5px;
+}
+
+.instructional-section {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: left;
+  font-weight: 500;
+  padding: 20px;
+  margin-bottom: 10px;
+}
+
+#map {
+  display: flex;
+  width: 500px; 
+  height: 500px; 
+  box-shadow: 0px 0.5px 3px; 
+  margin-left: 20%;
+
+
+ 
+
+}
+
+.map-add-info {
+  display: flex;
+}
+
+.map-add-info p {
+    font-size: 18px;
+    margin-left: 5%;
 }

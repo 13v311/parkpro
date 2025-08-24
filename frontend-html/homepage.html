@@ -6,14 +6,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="../styles/homepage.css">
-    <link rel="stylesheet" href="../styles/parkpro-sharedstyles.css">
+
     <!---->
   </head>
   <body>
+    <!--
     <header>
       <div class="logo-container">
         <a href="homepage.html"> 
-          <img class="logo" src="../images/ParkProUIC-logo.png">
+          <img class="logo" src="../images/newparkpro-logo.png">
         </a>
       </div>
       <div class="header-right">
@@ -22,18 +23,150 @@
         <button><a href="faq.html">FAQ</a></button>
         <button><a href="resources.html">Resources</a></button>
         <button><a href="contact.html">Contact</a></button>
-        <a href="profile.html">
+        <a class="profile-link" href="profile.html" style="display: block">
           <img class="header-profile-button" src="../images/blankprofile.png">
         </a>
-        <div id="userGreeting" style="color: white"></div>
+        <a class="auth-link" href="auth.html">
+          <img class="header-profile-button" src="../images/blankprofile.png">
+        </a>
+        <div id="userGreeting" style="color: white; overflow-wrap: break-word; padding: 5px;"></div>
       </div>
     </header>
+  -->
+    <header>
+      <div class="header-left">
+        <p>Menu</p>
+        <img src="../images/menu-icon.png" class="menu-click">
+      </div>
+      <div class="header-mid">
+        <a href="homepage.html"> 
+          <img class="logo" src="../images/newparkpro-logo.png">
+        </a>
+      </div>
+      <div class="header-right">
+        <a class="profile-link" href="profile.html" style="display: block">
+          <img class="header-profile-button" src="../images/blankprofile.png">
+        </a>
+        <a class="auth-link" href="auth.html">
+          <img class="header-profile-button" src="../images/blankprofile.png">
+        </a>
+        <div id="userGreeting" style="color: white; overflow-wrap: break-word; padding: 5px;"></div>
+      </div>
+    </header>
+
     <section class="hero-banner">
+      <nav class="nav-sidebar">
+        <div class="nav-home">
+          <a href="homepage.html">
+            <img src="../images/covered-lot-icon.png">
+            <p>Home</p>
+          </a>
+        </div>
+        <div class="nav-lotfinder">
+          <a href="parkstrat.html">       
+            <img src="../images/parkpro-car-logo.png">
+            <p>Find a Lot</p>
+          </a>
+        </div>
+        <div class="nav-tips">
+          <a href="tips.html">
+            <img src="../images/drivers-license-icon.png">
+            <p>Tips From Others</p>
+          </a>
+        </div>
+        <div class="nav-faq">
+          <a href="faq.html">
+            <img src="../images/faq-icon.png">
+            <p>FAQ</p>
+          </a>
+        </div>
+        <div class="nav-profile">
+          <a href="profile.html">
+            <img src="../images/blankprofile.png">
+            <p>Profile/Signup/Login</p>
+          </a>
+        </div>
+        <div class="nav-resources">
+          <a href="resources.html">
+            <img src="../images/human-resource-icon.png">
+            <p>Resources</p>
+          </a>
+        </div>
+        <div class="nav-contact">
+          <a href="contact.html">
+            <img src="../images/email-icon.png">
+            <p>Contact</p>
+          </a>
+        </div>
+        </nav>
       <div class="hero-content">
-        <!--something-->
+        <p style="font-size: 40px; font-weight: 500; color: white; text-shadow: 0.5px 0.5px 3px rgb(26, 23, 23);">Save money on parking passes/daily parking</p>
+        <p style="font-size: 40px; font-weight: 500; color: white; text-shadow: 0.5px 0.5px 3px rgb(26, 23, 23)">Decide on a parking lot easily</p>
+        <p style="font-size: 40px; font-weight: 500; color: white; text-shadow: 0.5px 0.5px 3px rgb(26, 23, 23)">Read tips from others just like you</p>
+      </div>
+      <!---
+      <div class="hero-content-go">
+        <button>Get Started</button>
+      </div>
+    -->
+      <div class="hero-content-bottom">
+        <p style="font-size: 20px; font-style: italic; margin-right: 10px; color: white; text-shadow: 0.5px 0.5px 3px rgb(26, 23, 23)">Made by a UIC undergrad parking commuter student, for commuter students at UIC, to make your commute just a little easier.</p>
       </div>
     </section>
-
+    <section class="make-easy-section">
+      <p style="font-size: 40px; font-weight: bold; text-align: center; padding-top: 20px">Makes Parking Easy For Everyone</p>
+      <div class="make-easy-container">
+        <p>✅Benefits commuters who have / plan to buy parking passes, daily park, or park every now and then!</p>
+        <p>✅Offers direct links to resources for those who park!</p>
+        <p>✅Lets users submit tips about parking at UIC!</p>
+        <p>✅Offers interactive map, and describes lot info (including accessibility and ev-charging)!</p>
+      </div>
+    </section>
+    <section class="how-section">
+      <p style="font-size: 40px; font-weight: bold; text-align: center; margin-top: 20px; padding-top: 20px">How ParkPro Helps You</p>
+      <div class="how-outer-container">
+        <div class="how-container1">
+          <img src="../images/yes-and-no-icon.png">
+          <p class="how-container-title">Choose From Two Parking Strategies</p>
+          <p>ParkPro offers two strategies to recommend lots to you. One allows you to rank your classes in terms of how important it is
+             to get to each on time, while the other has ParkPro give its own rankings based on closeness to all parking lots.</p>
+        </div>
+        <div class="how-container2">
+          <img src="../images/decision-making-icon.png">
+          <p class="how-container-title">Tell Us Your Preferences</p>
+          <p>You'll be able to give us your full class schedule (either manually or by uploading an ICS file which can be downloaded from XE registration), then you can also exclude any lots you don't want in your results.</p>
+        </div>
+        <div class="how-container3">
+          <img src="../images/person-driving-icon.png">
+          <p class="how-container-title">View Results and Go From There</p>
+          <p>You'll receive recommended parking lots as well as an interactive map that allows you to visually see where all of your classes and recommended lots are.
+            From there, you can decide what you'd like to do (i.e., apply for a pass, park there for the day, etc.)!
+          </p>
+        </div>
+      </div>
+      <div class="how-go">
+        <a href="parkstrat.html">
+          Explore more >
+        </a>
+      </div>
+    </section>
+    <section class="feedback-section">
+      <p style="margin-left: 10px; font-size: 30px; font-weight: bold; color: #d50032;   text-shadow: 1px 1px 1px rgb(26, 23, 23);">Submit Feedback</p>
+      <p style="margin-left: 10px; font-size: 16px; font-weight: 500; font-style: italic">Loads default email client set up on your device</p>
+      <div class="feedback-outer-div">
+        <div>
+          <p>Enter the subject</p>
+          <input placeholder="Example: New Feature" id="subject-input" required>
+        </div>
+        <div>
+          <p>Type in your feedback</p>
+          <textarea placeholder="Example: ParkPro should have a ___ feature." id="feedback" required></textarea>
+        </div>
+        <button id="submit">Submit</button>
+      </div>
+      <p style="font-size: 20px; font-weight: 500; margin-left: 10px;">Thank you, it is greatly appreciated! 😁</p>
+      <p style="font-size: 14px; font-style: italic; margin-left: 10px">If this does not work, feel free to email parkpro.contact@gmail.com.</p>
+    </section>
     <footer>
       <div class="footer-grid">
         <div class="resources-footer">Resources
@@ -51,8 +184,13 @@
             <img src="../images/uicroadway.png" class="footer-img">
           </a>
         </div>
-        <div class="links-footer">Links</div>
-        <div></div>
+        <div class="links-footer">Links
+          <div class="links-footer-list">
+            <a href="reviewtips.html">Tips Moderation (admin only)</a>
+            <a href="auth.html">Log In/Log Out</a>
+            <a href="https://icons8.com/icons">Icons Website (Where We Find Icons To Use)</a>
+          </div>
+        </div>
       </div>
     </footer>
 
@@ -65,5 +203,7 @@
     <script src="/scripts/firebase-init.js"></script>
     <script src="/scripts/firebase-header-display.js"></script>
     
+
+    <script src="/scripts/homepage.js"></script>
   </body>
 </html>

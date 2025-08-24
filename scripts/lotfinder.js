@@ -2,27 +2,27 @@ const urlParams = new URLSearchParams(window.location.search);
 const selectedStrategy = urlParams.get("strategy");
 
 //determines which parts of the site will show based on the strategy chosen
-if(selectedStrategy === 'average') {
-  document.querySelector('.calculate-most-appeared-button').style.display = 'none';
-  document.querySelector('.calculate-weighted-average-button').style.display = 'none';
-  document.querySelector('.calculate-average-button').style.display = 'block';
-} else if (selectedStrategy === 'majority') {
+ if (selectedStrategy === 'majority') {
   document.querySelector('.calculate-most-appeared-button').style.display = 'block';
   document.querySelector('.calculate-weighted-average-button').style.display = 'none';
   document.querySelector('.calculate-average-button').style.display = 'none';
+  document.querySelector('.weighted-instructions').style.display = 'none';
+  document.querySelector('.majority-instructions').style.display = 'block';
 } else if (selectedStrategy === 'weighted') {
   document.querySelector('.calculate-most-appeared-button').style.display = 'none';
   document.querySelector('.calculate-weighted-average-button').style.display = 'block';
   document.querySelector('.calculate-average-button').style.display = 'none';
+  document.querySelector('.weighted-instructions').style.display = 'block';
+  document.querySelector('.majority-instructions').style.display = 'none';
 }
 
 var buildingList = [];
 var classList = [];
-var weightList = []; //array of importance values 1 to 5
+var weightList = []; //array of importance values based on number of classes inputted
 var excludedLots = [];
 
   //lot sizes gathered from parkopedia, needed to show results for different calculation algorithms
-  const lotAttributesList = {
+  const lotDetailList = {
     "Lot 6" : ["Card & Event", "N/A", "lot6pic1.jfif", "1135 South Halsted Street"],
     "Lot 1A" : ["Card Only", "N/A", "lot1Apic1.jfif", "1109 West Harrison Street"],
     "Lot 1B" : ["Card Only", "N/A", "lot1Bpic1.jfif", "1139 West Harrison Street"],
@@ -38,7 +38,189 @@ var excludedLots = [];
     "Lot 9" : ["Card Only", "N/A", "lot9pic1.jfif", "501 South Morgan Street"]
   };
 
-renderList();
+  //additional attributes such as accessible, electric, etc, using true/false vals
+  //this order: open/covered, accessible, ev charging, ...
+  //TODO: put these values in here or its not gonna load the lots
+  //most are placeholders, pplz confirm all of these
+  const lotAttributesList = {
+    "Lot 6" : [false, true],
+    "Lot 1A" : [false],
+    "Lot 1B" : [false],
+    "Lot 5" : [false],
+    "Maxwell Street Parking Structure" : [true,false,true],
+    "Lot 14" : [false],
+    "Harrison Street Parking Structure" : [true,false,true],
+    "Lot 11" : [false],
+    "Halsted Taylor Parking Structure" : [true, true, true],
+    "Lot 3" : [false],
+    "Lot 20" : [false],
+    "Lot 8" : [false],
+    "Lot 9" : [false]
+  };
+
+renderList(); //automatically render the list
+
+//below you will find code to read an ics file which is provided by xe registration if users download it
+document.getElementById("icsFileInput").addEventListener("change", function(event) {
+  const file = event.target.files[0];
+  if (!file) return;
+
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    const text = e.target.result;
+    parseICS(text); // pass the contents to our parser
+  };
+  reader.readAsText(file);
+});
+
+//yes, chatgpt helped me do this because i have no idea how to parse ics files lol
+function parseICS(icsData) {
+  const events = [];
+  const lines = icsData.split(/\r?\n/);
+  let currentEvent = null;
+
+  lines.forEach(line => {
+    if(line.startsWith("BEGIN:VEVENT")) {
+      currentEvent = {};
+    } else if(line.startsWith("END:VEVENT")) {
+      if(currentEvent) {events.push(currentEvent);}
+      currentEvent = null;
+    } else if (currentEvent) {
+      if (line.startsWith("SUMMARY:")) {
+        currentEvent.className = line.replace("SUMMARY:", "").trim();
+      } else if(line.startsWith("LOCATION:")) {
+        const locationLine = line.replace("LOCATION:", "").trim();
+        const match = locationLine.match(/Chicago Building:\s*(.*?)\s*Room:/);
+        if (match) {
+          currentEvent.building = match[1].trim();
+        }
+      }
+    }
+  });
+
+  //push both class and building to respective outside lists
+  events.forEach(cbSet => {
+    //for building list there are, sadly, a lot of exclusions we have to make cuz of the names
+    var buildingName = cbSet.building;
+    if(buildingName === 'Comp Des Research & Learn Ctr') {buildingList.push("CDRLC");}
+    else if(buildingName === 'Behavioral Sciences Building') {buildingList.push("BSB");}
+    else if(buildingName === 'Lecture Center Building A') {buildingList.push("Lecture Center A");}
+    else if(buildingName === 'Lecture Center Building B') {buildingList.push("Lecture Center B");}
+    else if(buildingName === 'Lecture Center Building C') {buildingList.push("Lecture Center C");}
+    else if(buildingName === 'Lecture Center Building D') {buildingList.push("Lecture Center D");}
+    else if(buildingName === 'Lecture Center Building E') {buildingList.push("Lecture Center E");}
+    else if(buildingName === 'Lecture Center Building F') {buildingList.push("Lecture Center F");}
+    else if(buildingName === 'Thomas Beckham Hall') {buildingList.push('TBH');}
+    else if(buildingName === 'Academic & Residential Complex') {buildingList.push('ARC');}
+    else if(buildingName === 'Science & Engineering South') {buildingList.push('SES');}
+    else if(buildingName === 'Science & Engineering Lab East') {buildingList.push('Science & Engineering Labs East');}
+    else if(buildingName === 'Science & Engineering Lab West') {buildingList.push('Science & Engineering Labs West');}
+    else {
+      buildingList.push(cbSet.building);
+    }
+
+    classList.push(cbSet.className);
+    //addClass(cbSet.className, cbSet.building);
+  });
+  renderList();
+}
+//all done with file stuff
+
+//this function will create a map for users based on the results they were given for their lots
+function initializeMap(lotNames) {
+  //first, we're going to plot every class building on the map that the user inputted
+
+  //center serves as the center of the map
+  const centerUIC = {lat: 41.87190224920448, lng: -87.6492414536955};
+
+  const map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 15,
+    center: centerUIC,
+  });
+
+  //let's take a look at buildingList to get these buildings; google maps lets us use a geocoder to create
+  //latitude and longitude values for these class buildings
+  const geocoder = new google.maps.Geocoder();
+
+  for(let i = 0; i < buildingList.length; i++) {
+    console.log(`originally, this building name is ${buildingList[i]}`);
+    let buildingName = buildingList[i];
+    let className = classList[i];
+    //ill make a few exceptions because it in fact does not work universally as hoped for below
+    //we will change them to their respective address
+    if(buildingName === 'CDRLC') {buildingName = '842w W. Taylor St'};
+    if(buildingName === 'Science & Engineering Labs East') {buildingName = '950 S Halsted St'};
+    if(buildingName === 'Science & Engineering Labs West') {buildingName = '804 W Taylor St'};
+
+    //we will use the building name along with , UIC for the address (hopefully this works unviersally)
+    geocoder.geocode( {address: `${buildingName}, Chicago, IL 60607`}, (results, status) => {
+      if(status === 'OK') {
+        const location = results[0].geometry.location;
+        new google.maps.Marker({
+          position: location,
+          map: map,
+          label: {
+            text: `${className}`,
+            color: 'dodgerblue',
+            fontSize: '14px',
+            fontWeight: 'bold'
+          },
+          title: `${buildingName}`,
+          icon: {
+            url: "/images/classroom-icon.png",
+            labelOrigin: new google.maps.Point(30, 55)
+          },
+        });
+      } else {
+        console.error(`There was an error using the geocoder for: ${buildingName}` + status);
+      }
+    });
+
+    //next let's look at the parking results, which are separated by key and value
+    let j = 1;
+    Object.keys(lotNames).forEach((lot) => {
+      console.log(lotNames);
+      const rank = j;
+      const address = lotNames[lot];
+      //the color of the label will be determined by the rank of the lot in the algorithm
+      let color = '';
+      //if(j === 1) {color = 'gold';}
+      //else if(j === 2) {color = 'silver';}
+      //else {color = 'bronze';}
+
+      //use a geocoder to get lat/lon of lot with a specific address!
+      geocoder.geocode( {address: `${address}, Chicago, IL 60607`}, (results, status) => {
+        if(status === 'OK') {
+          const location = results[0].geometry.location;
+          new google.maps.Marker({
+            position: location,
+            map: map,
+            label: {
+              text: `${lot} (ranked #${rank})`,
+              color: 'black',
+              fontSize: '15px',
+              fontWeight: 'bold'
+            },
+            title: `${lot}`,
+            icon: {
+              url: "/images/parking-p-icon.png",
+              labelOrigin: new google.maps.Point(30, 55)
+            },
+          });
+        } else {
+          console.error(`There was an error using the geocoder for: ${lot}` + status);
+        }
+      });
+
+      j++;
+    });
+  }
+}
+
+function clearResults() {
+  document.querySelector('.js-lot-banner-list')
+    .innerHTML = '';
+}
 
 function displayRangeValues() {
   for(let i = 0; i < classList.length; i++) {
@@ -47,18 +229,14 @@ function displayRangeValues() {
 
     if(!slider || !output) continue;
 
-      if(slider.value === '3') {output.innerHTML = `${slider.value} (high importance)`;}
-      if(slider.value === '2') {output.innerHTML = `${slider.value} (default importance)`;}
-      if(slider.value === '1') {output.innerHTML = `${slider.value} (low importance)`;}
 
     //if slider is moved, values will change
     slider.addEventListener('input', function()  {
-      if(slider.value === '3') {output.innerHTML = `${slider.value} (high importance)`;}
-      if(slider.value === '2') {output.innerHTML = `${slider.value} (default importance)`;}
-      if(slider.value === '1') {output.innerHTML = `${slider.value} (low importance)`;}
+      output.innerHTML = `${slider.value}`;
+
       //output.innerHTML = slider.value;
       weightList[i] = Number(slider.value); //dynamically change the value in weightList through event listener
-      //console.log(weightList);
+      console.log(weightList);
     });
   }
 }
@@ -66,11 +244,12 @@ function displayRangeValues() {
 
 function renderList() {
   let listHTML = '';
-  //console.log(weightList);
+  console.log(weightList);
 
   for(let i = 0; i < buildingList.length; i++) {
     const building = buildingList[i];
     const className = classList[i];
+    var classesAmt = buildingList.length;
     var html = `
     <div class="class-list-item-${i}">
       <p>${className}</p>
@@ -88,8 +267,8 @@ function renderList() {
         <button onclick="deleteClass(${i})">
           <img src="/images/trashcantrans.png">
         </button>
-        <input type="range" min="1" max="3" value="2" id="rangeDisplay${i}">
-        <p>Weight: <span id="weight${i}"></span></p>
+        <input type="range" min="1" max="${Number(classesAmt)}" value="1" id="rangeDisplay${i}">
+        <p>Ranking: <span id="weight${i}"></span></p>
       </div>`;
       }
 
@@ -98,8 +277,10 @@ function renderList() {
 
   //console.log(listHTML);
   document.querySelector('.js-class-list')
-    .innerHTML = listHTML;
+    .innerHTML = '';
 
+  document.querySelector('.js-class-list')
+    .innerHTML = listHTML;
     if(selectedStrategy === 'weighted') {displayRangeValues();}
 }
 
@@ -133,6 +314,7 @@ function addClass() {
     }
     name = 'Unnamed Class ' + (unnamedClassCount+1);
   };
+
 
   buildingList.push(building);
   classList.push(name);
@@ -244,17 +426,18 @@ function renderTimeList(timeList) {
   resetRender();
   let position = 1;
   let listHTML = '';
+  let lots = {};
 
 
   for(let i = 0; i < 3; i++) { //by default, top 3 vals are shown
     const [lotName1, avgTime] = timeList[i];
-    const found = Object.entries(lotAttributesList).find(([lot, [accessType, lotSize, lotPicture, address]]) => {
+    const found = Object.entries(lotDetailList).find(([lot, [accessType, lotSize, lotPicture, address]]) => {
       return lot.includes(lotName1);
     });
 
     if (found) {
       const [lotName2, [accessType, lotSize, lotPicture, address]] = found;
-
+      lots[lotName2] = address;
       //console.log("Lot:", lotName1);
       //console.log("Access Type:", accessType);
       //console.log("Lot Size:", lotSize);
@@ -270,7 +453,25 @@ function renderTimeList(timeList) {
                 <img src="/images/locationpin.png">
                 <p style="color: rgb(66, 66, 66)">${address}, Chicago, IL 60607</p> <!--i wanna put a little location icon next to this-->
               </div>
-              <p style="padding-top: 10px">this is a long description about the lot and what happens. maybe some interesting information like hey i park at this lot! or at least i did freshman year. im kinda biased so might continue parking here.</p>
+              <p style="padding-top: 10px"></p>
+              <div class="lot-attribute-list">
+                <div class="accessible-attribute-container-${i}" style="display: flex; align-items: center;">
+                  <img src="/images/accessibility-icon.png" style="height: 25px;">
+                  <p>This lot is accessibility friendly and contains accessible spots. Visit https://parking.uic.edu/accessible-parking/ for more info.</p>
+                </div>
+                <div class="evcharge-attribute-container-${i}" style="display: flex; align-items: center;">
+                  <img src="/images/evcharge-icon.png" style="height: 25px;">
+                  <p>This lot contains spots for electric vehicle charging. Visit https://parking.uic.edu/electric-vehicles/ for more info.</p>
+                </div>
+                <div class="covered-attribute-container-${i}" style="display: flex; align-items: center;">
+                  <img src="/images/covered-lot-icon.png" style="height: 25px">
+                  <p>This lot is covered (offers protection from outside weather elements).</p>
+                </div>
+                <div class="open-attribute-container-${i}" style="display: flex; align-items: center;">
+                  <img src="/images/open-lot-icon.png" style="height: 25px;">
+                  <p>This lot is not covered (does not offer protection from outside weather elements).</p>
+                </div>
+              </div>
             </div>
             <hr>
             <div class="lot-banner-right">
@@ -283,8 +484,10 @@ function renderTimeList(timeList) {
               <p class="stats-header">Estimated Amt of Spots Total</p>
               <p>${lotSize}</p>
 
+              <!-- i am putting the avg walking time in a comment at least for now bc it doesnt represent accurately
               <p class="stats-header">Average Walking Time</p>
               <p>${avgTime} mins</p>
+              -->
             </div>
           </div>
           <hr>
@@ -292,7 +495,7 @@ function renderTimeList(timeList) {
             <img src="/images/yellow-star.png">
             <p style="font-size: 15px; padding: 10px 3px">Favorite This Lot</p>
             <div class="lot-banner-bottom-right">
-              <button class="lot-banner-button">this will do smth eventually...</button>
+              <a class="lot-banner-button" href="https://parkingservices.uic.edu/studentparking/newapplication">Link to Parking Application</a>
             </div>
           </div>
 
@@ -315,6 +518,46 @@ function renderTimeList(timeList) {
   //add all the banners to the lot banner list in html!
   document.querySelector('.js-lot-banner-list')
     .innerHTML = listHTML;
+
+    for(let i = 0; i < timeList.length; i++) {
+      if(i >= 3) {continue;} //only top 3 results are shown
+      const [lotName1, avgTime] = timeList[i];
+      const found2 = Object.entries(lotAttributesList).find(([lot, [isCovered, isAccessible, hasCharging]]) => {
+        return lot.includes(lotName1);
+      });
+
+      if(!found2) {
+        console.log("Could not match lotAttributeList values with found2 values. Elements may be missing.");
+        break;
+      }
+
+      const [lotName3, [isCovered = false, isAccessible = false, hasCharging = false]] = found2;
+
+
+      
+      
+      if(isCovered) {
+        document.querySelector(`.covered-attribute-container-${i}`).style.display = 'flex';
+        document.querySelector(`.open-attribute-container-${i}`).style.display = 'none';
+      } else {
+        document.querySelector(`.covered-attribute-container-${i}`).style.display = 'none';
+        document.querySelector(`.open-attribute-container-${i}`).style.display = 'flex';
+      }
+      if(isAccessible) {
+        document.querySelector(`.accessible-attribute-container-${i}`).style.display = 'flex';
+      } else {
+        document.querySelector(`.accessible-attribute-container-${i}`).style.display = 'none';
+      }
+      if(hasCharging) {
+        document.querySelector(`.evcharge-attribute-container-${i}`).style.display = 'flex';
+      } else {
+        document.querySelector(`.evcharge-attribute-container-${i}`).style.display = 'none';
+      }
+      
+    }
+
+  //lastly initialize the map that shows lots and classes
+  initializeMap(lots);
 }
 
 async function calculateAvgTimes(weighted) {
@@ -371,17 +614,24 @@ function renderMostAppearedList(appearancesList, closestBuildings) {
   resetRender();
   let position = 1;
   let listHTML = '';
+  let lots = {}; //this will be sent to the map function
 
 
   for(let i = 0; i < appearancesList.length; i++) {
-    //if(i >= 3) {continue}; //by default, top 3 vals are shown
+    if(i >= 3) {continue}; //by default, top 3 vals are shown
+    //needs to find the lot in the lotdetaillist and the lotattributeslist
     const [lotName1, appearances] = appearancesList[i];
-    const found = Object.entries(lotAttributesList).find(([lot, [accessType, lotSize, lotPicture, address]]) => {
+
+    const found1 = Object.entries(lotDetailList).find(([lot, [accessType, lotSize, lotPicture, address]]) => {
       return lot.includes(lotName1);
     });
 
-    if (found) {
-      const [lotName2, [accessType, lotSize, lotPicture, address]] = found;
+
+
+    if (found1) {
+      const [lotName2, [accessType, lotSize, lotPicture, address]] = found1;
+
+      lots[lotName2] = address;
       let buildings = [];
       if(lotName2 in closestBuildings) {
         buildings = closestBuildings[lotName2];
@@ -403,12 +653,31 @@ function renderMostAppearedList(appearancesList, closestBuildings) {
                 <img src="/images/locationpin.png">
                 <p style="color: rgb(66, 66, 66)">${address}, Chicago, IL 60607</p> <!--i wanna put a little location icon next to this-->
               </div>
-              <p style="padding-top: 10px">this is a long description about the lot and what happens. maybe some interesting information like hey i park at this lot! or at least i did freshman year. im kinda biased so might continue parking here.</p>
-              <p style="margin-top: 10px; font-weight: 500"> Your class buildings near this lot: ${buildings}</p>
+              <p style="padding-top: 10px"></p>
+              <p style="margin-top: 5px; font-weight: 500; font-size: 13px;"> Your class buildings near this lot: ${buildings}</p>
+              <p style="margin-top: 7px; font-weight: 500; font-size: 13px;">Specifics about this Lot:</p>
+              <div class="lot-attribute-list">
+                <div class="accessible-attribute-container-${i}" style="display: flex; align-items: center;">
+                  <img src="/images/accessibility-icon.png" style="height: 25px;">
+                  <p>This lot is accessibility friendly and contains accessible spots. Visit https://parking.uic.edu/accessible-parking/ for more info.</p>
+                </div>
+                <div class="evcharge-attribute-container-${i}" style="display: flex; align-items: center;">
+                  <img src="/images/evcharge-icon.png" style="height: 25px;">
+                  <p>This lot contains spots for electric vehicle charging. Visit https://parking.uic.edu/electric-vehicles/ for more info.</p>
+                </div>
+                <div class="covered-attribute-container-${i}" style="display: flex; align-items: center;">
+                  <img src="/images/covered-lot-icon.png" style="height: 25px">
+                  <p>This lot is covered (offers protection from outside weather elements).</p>
+                </div>
+                <div class="open-attribute-container-${i}" style="display: flex; align-items: center;">
+                  <img src="/images/open-lot-icon.png" style="height: 25px;">
+                  <p>This lot is not covered (does not offer protection from outside weather elements).</p>
+                </div>
+              </div>
             </div>
             <hr>
             <div class="lot-banner-right">
-              <p class="stats-header">Position in Time Ranking</p>
+              <p class="stats-header">Position in Ranking</p>
               <p>#${position}</p>
 
               <p class="stats-header">Lot Access Type</p>
@@ -426,7 +695,7 @@ function renderMostAppearedList(appearancesList, closestBuildings) {
             <img src="/images/yellow-star.png">
             <p style="font-size: 15px; padding: 10px 3px">Favorite This Lot</p>
             <div class="lot-banner-bottom-right">
-              <button class="lot-banner-button">this will do smth eventually...</button>
+              <a class="lot-banner-button" href="https://parkingservices.uic.edu/studentparking/newapplication">Link to Parking Application</a>
             </div>
           </div>
 
@@ -434,7 +703,11 @@ function renderMostAppearedList(appearancesList, closestBuildings) {
         </div>
       `
       listHTML += html;
+      
+
     }
+
+
 
     //this will update the position variable only if the current time is less than the next one in timeList
     //if they're equal, that means both this and the next lot will have the same positon in the list!
@@ -449,6 +722,45 @@ function renderMostAppearedList(appearancesList, closestBuildings) {
   //add all the banners to the lot banner list in html!
   document.querySelector('.js-lot-banner-list')
     .innerHTML = listHTML;
+
+    for(let i = 0; i < appearancesList.length; i++) {
+      if(i >= 3) {continue;} //only top 3 results are shown
+      const [lotName1, appearances] = appearancesList[i];
+      const found2 = Object.entries(lotAttributesList).find(([lot, [isCovered, isAccessible, hasCharging]]) => {
+        return lot.includes(lotName1);
+      });
+
+      if(!found2) {
+        console.log("Could not match lotAttributeList values with found2 values. Elements may be missing.");
+        break;
+      }
+
+      const [lotName3, [isCovered = false, isAccessible = false, hasCharging = false]] = found2;
+
+
+      
+      
+      if(isCovered) {
+        document.querySelector(`.covered-attribute-container-${i}`).style.display = 'flex';
+        document.querySelector(`.open-attribute-container-${i}`).style.display = 'none';
+      } else {
+        document.querySelector(`.covered-attribute-container-${i}`).style.display = 'none';
+        document.querySelector(`.open-attribute-container-${i}`).style.display = 'flex';
+      }
+      if(isAccessible) {
+        document.querySelector(`.accessible-attribute-container-${i}`).style.display = 'flex';
+      } else {
+        document.querySelector(`.accessible-attribute-container-${i}`).style.display = 'none';
+      }
+      if(hasCharging) {
+        document.querySelector(`.evcharge-attribute-container-${i}`).style.display = 'flex';
+      } else {
+        document.querySelector(`.evcharge-attribute-container-${i}`).style.display = 'none';
+      }
+      
+    }
+    //lastly initialize the map for the users
+    initializeMap(lots);
 }
 
 
@@ -516,6 +828,13 @@ function confirmExclusions() {
       }
     });
 
+    const listText = document.querySelector('.excluded-lot-list');
+
+  if(excludedLots.length === 0) {
+    listText.innerHTML = 'Excluded Lot(s): None Selected';
+  } else {
+    listText.innerHTML = `Excluded Lot(s): ${excludedLots}`;
+  }
   console.log(excludedLots);
 }
 

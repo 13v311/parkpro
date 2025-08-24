@@ -1,0 +1,173 @@
+body {
+  min-height: 100%;
+  background-color: black;
+  font-family: Roboto, Arial;
+}
+
+input {
+
+  font-size: 20px;
+  background-color: rgb(29, 29, 29);
+  padding: 5px;
+  color: white;
+  border-radius: 5px;
+  border: none;
+}
+
+.outer-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.outer-div p {
+  margin: 0;
+  padding: 3px;
+}
+
+.join-waitlist-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.join-waitlist-container img {
+  height: 175px;
+}
+
+.join-waitlist-msg {
+  background-image: linear-gradient(rgb(126, 126, 126), rgb(214, 214, 214));
+  background-clip: text;
+  font-weight: 500;
+  font-size: 40px;
+  color: transparent;
+  margin: 0;
+  /*need to make text color transparent, otherwise text covers the background image with background-clip*/
+}
+
+.join-waitlist-msg-p {
+  background-image: linear-gradient(45deg, #d50032, rgb(65, 65, 65));
+  background-clip: text;
+  color: transparent;
+  font-size: 45px;
+  font-weight: 500;
+  margin: 0;
+}
+
+.join-waitlist-msg-sm {
+  color: rgb(204, 204, 204);
+  font-size: 16px;
+}
+
+.waitlist-input-container {
+  display: flex;
+  margin-top: 10px;
+}
+
+.continue-button {
+  border: none;
+  border-radius: 2px;
+  padding: 5px;
+  color: white;
+  font-weight: 500;
+  font-size: 20px;
+  text-shadow: 1px 1px 1px #000000;
+
+  background-image: linear-gradient(
+  45deg,
+  #845ec2,
+  #d65db1,
+  #ff6f91,
+  #ff9671,
+  #ffc75f,
+  #f9f871
+  );
+  background-size: 300%;
+  background-position: left;
+  transition: background-position 1s ease;
+  margin-left: 4px;
+}
+
+.continue-button:hover,
+.continue-button:focus {
+  background-position: right;
+}
+
+.lower-div {
+  margin-top: 160px;
+}
+
+.lower-div p{
+  color: gray;
+  font-size: 13px;
+}
+
+.gradient-button1 {
+  width: 350px;
+  height: 1px;
+  margin-top: 10px;
+  padding: 1px;
+  border: 0;
+  background-image: linear-gradient(
+  45deg,
+  black,
+  #845ec2,
+  #d65db1,
+  #ff6f91,
+  #ff9671,
+  #ffc75f,
+  #f9f871
+  );
+  background-size: 300% 300%;
+  animation: flow-animation1 8s infinite ease;
+}
+
+.gradient-button2 {
+  position: absolute;
+  width: 1px;
+  height: 300px;
+  top: 50px;
+  left: 900px;
+  padding: 1px;
+  border: 0;
+  background-image: linear-gradient(
+  45deg,
+  black,
+  #f9f871,
+  #ffc75f,
+  #ff9671,
+  #ff6f91,
+  #d65db1,
+  #845ec2
+  );
+  background-size: 300% 300%;
+  animation: button-animation1 8s infinite ease;
+}
+
+/*an animation for my buttons that goes through gradient, then backwards, and so on infinitely*/
+@keyframes button-animation1 {
+  0% {background-position: top;}
+  50% {background-position: bottom;}
+  100% {background-position: top;}
+}
+
+@keyframes button-animation2 {
+  0% {background-position: bottom;}
+  50% {background-position: top;}
+  100% {background-position: bottom;}
+}
+
+@keyframes flow-animation1 {
+  0% {background-position: left;}
+  50% {background-position: right;}
+  100% {background-position: left;}
+}
+/*
+about transitions
+(originally have a background-position of left)
+
+.gradient-button1:hover,
+.gradient-button1:focus {
+  background-position: right;
+}
+*/

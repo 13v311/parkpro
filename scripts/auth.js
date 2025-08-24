@@ -33,8 +33,6 @@ function login() {
   firebase.auth().signInWithEmailAndPassword(email, password)
     .then((userCredential) => {
       document.getElementById('authMessage').textContent = 'Logged in successfully! You can now safely return to the homepage.';
-      delay(3000);
-      document.getElementById('authMessage').textContent = '';
     })
     .catch((error) => {
       document.getElementById('authMessage').textContent = error.message;

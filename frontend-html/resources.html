@@ -11,30 +11,107 @@
   </head>
   <body>
     <header>
-      <div class="logo-container">
+      <div class="header-left">
+        <p>Menu</p>
+        <img src="../images/menu-icon.png" class="menu-click">
+      </div>
+      <div class="header-mid">
         <a href="homepage.html"> 
-          <img class="logo" src="../images/ParkProUIC-logo.png">
+          <img class="logo" src="../images/newparkpro-logo.png">
         </a>
       </div>
       <div class="header-right">
-        <button><a href="parkstrat.html">Find a Lot</a></button>
-        <button><a href="tips.html">Tips</a></button>
-        <button><a href="faq.html">FAQ</a></button>
-        <button><a href="resources.html">Resources</a></button>
-        <button><a href="contact.html">Contact</a></button>
-        <a href="profile.html">
+        <a class="profile-link" href="profile.html" style="display: block">
           <img class="header-profile-button" src="../images/blankprofile.png">
         </a>
-        <div id="userGreeting" style="color: white"></div>
+        <a class="auth-link" href="auth.html">
+          <img class="header-profile-button" src="../images/blankprofile.png">
+        </a>
+        <div id="userGreeting" style="color: white; overflow-wrap: break-word; padding: 5px;"></div>
       </div>
     </header>
+      <nav class="nav-sidebar">
+        <div class="nav-home">
+          <a href="homepage.html">
+            <img src="../images/covered-lot-icon.png">
+            <p>Home</p>
+          </a>
+        </div>
+        <div class="nav-lotfinder">
+          <a href="parkstrat.html">       
+            <img src="../images/parkpro-car-logo.png">
+            <p>Find a Lot</p>
+          </a>
+        </div>
+        <div class="nav-tips">
+          <a href="tips.html">
+            <img src="../images/drivers-license-icon.png">
+            <p>Tips From Others</p>
+          </a>
+        </div>
+        <div class="nav-faq">
+          <a href="faq.html">
+            <img src="../images/faq-icon.png">
+            <p>FAQ</p>
+          </a>
+        </div>
+        <div class="nav-profile">
+          <a href="profile.html">
+            <img src="../images/blankprofile.png">
+            <p>Profile/Signup/Login</p>
+          </a>
+        </div>
+        <div class="nav-resources">
+          <a href="resources.html">
+            <img src="../images/human-resource-icon.png">
+            <p>Resources</p>
+          </a>
+        </div>
+        <div class="nav-contact">
+          <a href="contact.html">
+            <img src="../images/email-icon.png">
+            <p>Contact</p>
+          </a>
+        </div>
+        </nav>
     <p class="resources-header">Resources</p>
-    <p>These are some resources we've accumulated that may be of help to you, especially if you consider yourself a commuter student at UIC!</p>
-    <div class="resources-container"></div>
+    <p style="font-size: 16px; font-style: italic; color: black">These are some resources we've accumulated that may be of help to you, especially if you consider yourself a commuter student at UIC!</p>
+    <div class="resources-container">
+      <div class="resource-list-1">
+        <a href="https://parking.uic.edu" class="rl-uicpark">
+          <div>
+            <img src="../images/covered-lot-icon.png">
+            <p>UIC's Parking Services Website</p>
+          </div>
+        </a>
+        <a href="https://csrc.uic.edu" class="rl-csrc">
+          <img src="../images/drivers-license-icon.png">
+          <div>
+            <p>UIC's Commuter & Off-Campus Life</p>
+          </div>
+        </a>
+        <a href="https://transportation.uic.edu/" class="rl-uictransport">
+          <img src="../images/public-trans-icon.png">
+          <div>
+            <p>UIC's Transportation Website</p>
+          </div>
+        </a>
+      </div>
+      <div class="resource-list-2">
+        <a href="https://www.spotangels.com" class="rl-spotangels">
+          <div >
+            <img src="../images/spotangels-icon.svg">
+            <p>SpotAngels (Third-Party Parking Assistance)</p>
+          </div>
+        </a>
+      </div>
+    </div>
     <section>
       <div class="suggestions-container">
         <p>Have Suggestions?</p>
-        <!--make a suggestions box just like the tips submission box-->
+        <a href="">
+
+        </a>
       </div>
     </section>
     <footer>
@@ -54,8 +131,13 @@
             <img src="../images/uicroadway.png" class="footer-img">
           </a>
         </div>
-        <div class="links-footer">Links</div>
-        <div></div>
+        <div class="links-footer">Links
+          <div class="links-footer-list">
+            <a href="reviewtips.html">Tips Moderation (admin only)</a>
+            <a href="auth.html">Log In/Log Out</a>
+            <a href="https://icons8.com/icons">Icons Website (Where We Find Icons To Use)</a>
+          </div>
+        </div>
       </div>
     </footer>
 

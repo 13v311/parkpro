@@ -11,33 +11,170 @@
   </head>
   <body>
     <header>
-      <div class="logo-container">
+      <div class="header-left">
+        <p>Menu</p>
+        <img src="../images/menu-icon.png" class="menu-click">
+      </div>
+      <div class="header-mid">
         <a href="homepage.html"> 
-          <img class="logo" src="../images/ParkProUIC-logo.png">
+          <img class="logo" src="../images/newparkpro-logo.png">
         </a>
       </div>
       <div class="header-right">
-        <button><a href="parkstrat.html">Find a Lot</a></button>
-        <button><a href="tips.html">Tips</a></button>
-        <button><a href="faq.html">FAQ</a></button>
-        <button><a href="resources.html">Resources</a></button>
-        <button><a href="contact.html">Contact</a></button>
-        <a href="profile.html">
+        <a class="profile-link" href="profile.html" style="display: block">
           <img class="header-profile-button" src="../images/blankprofile.png">
         </a>
-        <div id="userGreeting" style="color: white"></div>
+        <a class="auth-link" href="auth.html">
+          <img class="header-profile-button" src="../images/blankprofile.png">
+        </a>
+        <div id="userGreeting" style="color: white; overflow-wrap: break-word; padding: 5px;"></div>
       </div>
     </header>
+      <nav class="nav-sidebar">
+        <div class="nav-home">
+          <a href="homepage.html">
+            <img src="../images/covered-lot-icon.png">
+            <p>Home</p>
+          </a>
+        </div>
+        <div class="nav-lotfinder">
+          <a href="parkstrat.html">       
+            <img src="../images/parkpro-car-logo.png">
+            <p>Find a Lot</p>
+          </a>
+        </div>
+        <div class="nav-tips">
+          <a href="tips.html">
+            <img src="../images/drivers-license-icon.png">
+            <p>Tips From Others</p>
+          </a>
+        </div>
+        <div class="nav-faq">
+          <a href="faq.html">
+            <img src="../images/faq-icon.png">
+            <p>FAQ</p>
+          </a>
+        </div>
+        <div class="nav-profile">
+          <a href="profile.html">
+            <img src="../images/blankprofile.png">
+            <p>Profile/Signup/Login</p>
+          </a>
+        </div>
+        <div class="nav-resources">
+          <a href="resources.html">
+            <img src="../images/human-resource-icon.png">
+            <p>Resources</p>
+          </a>
+        </div>
+        <div class="nav-contact">
+          <a href="contact.html">
+            <img src="../images/email-icon.png">
+            <p>Contact</p>
+          </a>
+        </div>
+        </nav>
     <div class="tips-container">
-      <p>Tips & Insights Archive</p>
-      <p>*Updated as of 5/27/2025</p>
+      <p style="font-size: 32px; text-align: center; font-weight: 700">Tips & Insights Archive</p>
+      <section class="tip-segment tip-segment1">
+        <div class="tip-segmentd">
+          <div class="tip-sidebar1"></div>
+
+          <button class="dropdown-button" onclick="revealSubject('Helping Others With ParkPro', 1)"></button>
+          <button class="subject-button">
+            <p>Tips About 'Helping Others With ParkPro'</p>
+          </button>
+
+        </div>
+        <div class="tip-segmentb">
+        </div>
+      </section>
+      <section class="tip-segment tip-segment2">
+        <div class="tip-segmentd">
+          <div class="tip-sidebar2"></div>
+
+          <button class="dropdown-button" onclick="revealSubject('A Specific Lot', 2)"></button>
+          <button class="subject-button">
+            <p>Tips About 'Specific Lots'</p>
+          </button>
+
+        </div>
+        <div class="tip-segmentb">
+        </div>
+      </section>
+      <section class="tip-segment tip-segment3">
+        <div class="tip-segmentd">
+          <div class="tip-sidebar3"></div>
+
+          <button class="dropdown-button" onclick="revealSubject('Cost-efficient Parking', 3)"></button>
+          <button class="subject-button">
+            <p>Tips About 'Cost-efficient Parking'</p>
+          </button>
+
+        </div>
+        <div class="tip-segmentb">
+        </div>
+      </section>
+      <section class="tip-segment tip-segment4">
+        <div class="tip-segmentd">
+          <div class="tip-sidebar4"></div>
+
+          <button class="dropdown-button" onclick="revealSubject('Navigating the Parking Website', 4)"></button>
+          <button class="subject-button">
+            <p>Tips About 'Navigating the Parking Website'</p>
+          </button>
+
+        </div>
+        <div class="tip-segmentb">
+        </div>
+      </section>
+      <section class="tip-segment tip-segment5">
+        <div class="tip-segmentd">
+          <div class="tip-sidebar5"></div>
+
+          <button class="dropdown-button" onclick="revealSubject('Navigating the Parking Application', 5)"></button>
+          <button class="subject-button">
+            <p>Tips About 'Navigating the Parking Application'</p>
+          </button>
+
+        </div>
+        <div class="tip-segmentb">
+        </div>
+      </section>
+      <section class="tip-segment tip-segment6">
+        <div class="tip-segmentd">
+          <div class="tip-sidebar6"></div>
+
+          <button class="dropdown-button" onclick="revealSubject('Raising Awareness for a Specific Resource', 6)"></button>
+          <button class="subject-button">
+            <p>Tips About 'Raising Awareness for Specific Resources'</p>
+          </button>
+
+        </div>
+        <div class="tip-segmentb">
+        </div>
+      </section>
+      <section class="tip-segment tip-segment7">
+        <div class="tip-segmentd">
+          <div class="tip-sidebar7"></div>
+
+          <button class="dropdown-button" onclick="revealSubject('Other', 7)"></button>
+          <button class="subject-button">
+            <p>Miscellaneous Tips</p>
+          </button>
+
+        </div>
+        <div class="tip-segmentb">
+        </div>
+      </section>
+      <p style="font-size: 20px; font-style: italic; font-weight: 500; margin-left: 10px;">*Updated as of 8/24/2025</p>
       <!--dropdowns similar to the faq will go here, but the tips will not have the same css style as faq ofc-->
     </div>
     <p class="tip-header">Want to submit your own tip?</p>
     <div class="tip-submission-container">
       <div>
         <p class="submission-header-text">Submit a tip or insight about parking at UIC down below for a chance to be featured on this page! We'd love to hear from you.</p>
-        <p>*Your email is needed just so you can be notified that your tip has been submitted and (potentially) posted!</p>
+        <p style="font-style: italic; font-size: 14px">*Your email is needed just so you can be notified when the status of your tip changes!</p>
         <div class="email-and-name-container">
           <div>
             <p class="input-header">Email</p> <!--make inline-->
@@ -51,7 +188,7 @@
         <div class="message-and-affiliation-container">
           <div>
             <p class="input-header">Affiliation</p>
-            <select id="uicAffiliation">
+            <select id="uicAffiliation" style="margin-bottom: 15px">
               <option value="N/A">Please choose your affiliation with UIC</option>
               <option>UIC Faculty</option>
               <option>UIC Staff</option>
@@ -59,6 +196,18 @@
               <option>Graduate Student</option>
               <option>Alumni</option>
               <option>Visitor</option>
+              <option>Other</option>
+            </select>
+
+            <p class="input-header">Subject</p>
+            <select id="tipSubject">
+              <option value="N/A">What is this tip about?</option>
+              <option>Helping Others With ParkPro</option>
+              <option>A Specific Lot</option>
+              <option>Cost-efficient Parking</option>
+              <option>Navigating the Parking Website</option>
+              <option>Navigating the Parking Application</option>
+              <option>Raising Awareness for a Specific Resource</option>
               <option>Other</option>
             </select>
           </div>
@@ -74,6 +223,9 @@
         </div>
       </div>
     </div>
+    <p style="text-align: center; font-size: 18px; font-weight: 500; padding-left: 15px; padding-right: 15px">If you've submitted a tip, look out for an email from parkpro.contact@gmail.com! This is our ONLY email address. 
+      It may appear in junk, so if you're afraid you'll miss the email, consider adding us as a safe sender!</p>
+
     <footer>
       <div class="footer-grid">
         <div class="resources-footer">Resources
@@ -91,8 +243,13 @@
             <img src="../images/uicroadway.png" class="footer-img">
           </a>
         </div>
-        <div class="links-footer">Links</div>
-        <div></div>
+        <div class="links-footer">Links
+          <div class="links-footer-list">
+            <a href="reviewtips.html">Tips Moderation (admin only)</a>
+            <a href="auth.html">Log In/Log Out</a>
+            <a href="https://icons8.com/icons">Icons Website (Where We Find Icons To Use)</a>
+          </div>
+        </div>
       </div>
     </footer>
 
@@ -104,6 +261,18 @@
     <!-- Your shared Firebase config -->
     <script src="/scripts/firebase-init.js"></script>
     <script src="/scripts/firebase-header-display.js"></script>
+
+    <!--emailjs sdk-->
+    <script type="text/javascript"
+            src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+    </script>
+    <script type="text/javascript">
+      (function(){
+          emailjs.init({
+            publicKey: "LgORgRbiZ5eNNgP7S",
+          });
+      })();
+    </script>
     <script src="/scripts/tips.js"></script>
     
   </body>

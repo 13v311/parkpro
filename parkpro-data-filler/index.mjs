@@ -1,16 +1,16 @@
+import https from "https";
 import dotenv from 'dotenv';
 dotenv.config();
 import admin from 'firebase-admin';
-import fetch from 'node-fetch';
+//import fetch from 'node-fetch';
 import serviceAccount from './parkprouic-firebase-adminsdk-fbsvc-aacc860f33.json' assert {type: "json"};
+
+const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
+
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount), 
   databaseURL:"https://parkprouic-default-rtdb.firebaseio.com/"
 });
-
-function delay(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms));
-}
 
 const db = admin.database();
 
@@ -36,6 +36,7 @@ function writeSingleData(origin, destination, minutes) {
 
   async function getWalkingTime(origin, destination) {
     const apiKey = process.env.GOOGLE_API_KEY;
+
 
     const url = `https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=${encodeURIComponent(origin)}&destinations=${encodeURIComponent(destination)}&mode=walking&key=${apiKey}`;
 
@@ -86,11 +87,14 @@ function writeSingleData(origin, destination, minutes) {
 "701 South Morgan St, Chicago, IL 60607", "802 South Halsted St"];
 */
 
-const buildings = ["705 South Morgan Street, Chicago, IL 60607", "935 West Harrison Street, Chicago, IL 60607",
-"929 West Harrison Street, Chicago, IL 60607"];
+/*const buildings = ["705 South Morgan Street, Chicago, IL 60607", "935 West Harrison Street, Chicago, IL 60607",
+"929 West Harrison Street, Chicago, IL 60607"];*/
+
+//last minute add.. forgot to add art & exhibition hall and etmsw and peb 8/20/25
+const buildings = ["400 South Peoria Street, Chicago, IL 60607", "1040 West Harrison Street, Chicago, IL 60607", "901 West Roosevelt Street, Chicago, IL 60607"];
 
   //call function with all of these lots, one lot at a time
-  /*async function runAllRequests() {
+/*  async function runAllRequests() {
     console.log("🚀 Starting walking time collection...");
     for (let lot of lots) {
       for (let building of buildings) {
@@ -144,7 +148,10 @@ const renamedBuildingsMap = {
   "Science & Engineering South" : "SES",
   "705 South Morgan Street, Chicago, IL 60607" : "Douglass Hall",
   "935 West Harrison Street, Chicago, IL 60607" : "Henry Hall",
-  "929 West Harrison Street, Chicago, IL 60607" : "Jefferson Hall"
+  "929 West Harrison Street, Chicago, IL 60607" : "Jefferson Hall",
+  "400 South Peoria Street, Chicago, IL 60607" : "Art & Exhibition Hall",
+  "1040 West Harrison Street, Chicago, IL 60607" : "ETMSW",
+  "901 West Roosevelt Street, Chicago, IL 60607" : "Physical Education Building"
 };
 
 async function renameLotsAndBuildings() {

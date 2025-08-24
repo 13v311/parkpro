@@ -1,11 +1,13 @@
 /* these are styles such as the header and footer styles that you'll find on almost every page of the website */
-header {
+/*header {
   background-color: #d50032;
   height: 75px;
   display: flex;
   flex-direction: row;
   box-shadow: 0.5px 0.5px 7px;
   margin-bottom: 30px;
+  max-width: 100%;
+  overflow: hidden;
 }
 
 header.full-header {
@@ -17,6 +19,8 @@ header.full-header {
   flex-direction: row;
   align-items: center;
   padding-left: 500px;
+  max-width: 100%;
+  flex-wrap: wrap;
 }
 
 .header-right button {
@@ -45,6 +49,121 @@ header.full-header {
 .header-profile-button {
   height: 50px;
 }
+*/
+
+header{
+  padding: 10px;
+  z-index: 1;
+  background-color: #d50032;
+  height: 75px;
+  min-width: 100%;
+  top: 0;
+  display: flex;
+  box-sizing: border-box;
+}
+
+header p {
+  color: black;
+}
+
+.header-left,
+.header-right,
+.header-mid {
+  width: 33%;
+  height: 100%;
+  display: flex;
+}
+
+.header-left {
+  align-items: center;
+}
+
+.header-mid {
+  justify-content: center;
+}
+
+.header-right {
+  justify-content: right;
+  align-items: center;
+}
+
+.header-left p {
+  color: white;
+  font-size: 18px;
+  margin-left: 10px;
+  text-shadow: 0.5px 0.5px 3px rgb(26, 23, 23);
+}
+
+.header-mid img,
+.header-right img {
+  height: 65px;
+}
+
+.header-left img {
+  margin-left: 10px;
+  height: 30px;
+  cursor:pointer;
+}
+
+nav {
+  opacity: 0;
+  visibility: hidden;
+  display: flex;
+  position: absolute;
+  min-height: 100%;
+  top: 75px;
+  flex-direction: column;
+  background-color: white;
+  width: 400px;
+  transition: opacity 0.7s ease, visibility 0.7s ease;
+  z-index: 99;
+}
+
+nav.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+nav a {
+  padding: 15px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.nav-sidebar img {
+  height: 50px;
+}
+
+.nav-sidebar p {
+  margin-left: 4px;
+  color: black;
+  text-shadow: 0.5px 0.5px 3px rgb(26, 23, 23);
+  font-size: 16px;
+}
+
+nav a {
+  background-color: white;
+  transition: background-color 0.5s ease;
+}
+
+nav a:hover {
+  background-color: #d50032;
+}
+
+.menu-click {
+  transition: transform 0.5s ease;
+}
+
+.menu-click.active {
+  transform: rotate(90deg);
+}
+
+#userGreeting {
+  font-size: 16px;
+  text-shadow: 0.5px 0.5px 3px rgb(26, 23, 23);
+}
+
 
 a {
   text-decoration: none;

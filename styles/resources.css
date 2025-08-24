@@ -3,3 +3,65 @@ p {
   font-size: 12;
   text-align: center;
 }
+
+.resources-header {
+  font-size: 24px;
+  font-weight: bold;
+  color: black;
+}
+
+.resources-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.resource-list-1,
+.resource-list-2 {
+
+  display: flex;
+  margin: 20px;
+}
+
+.resource-list-1 div,
+.resource-list-2 div {
+  padding: 10px;
+  min-height: 100px;
+}
+
+.resource-list-1 a,
+.resource-list-2 a {
+  text-align: center;
+  margin: 10px;
+  border-radius: 10px;
+}
+
+.resource-list-1 p,
+.resource-list-2 p {
+  color: white;
+  text-shadow: 1px 1px 2px rgb(26, 23, 23);
+  font-weight: 500;
+}
+
+.resource-list-1 img,
+.resource-list-2 img {
+  height: 50px;
+}
+
+.rl-uicpark {
+  background-image: linear-gradient(lightblue, rgb(26, 23, 23));
+
+
+
+}
+
+.rl-csrc {
+  background-image: linear-gradient(lightcoral, rgb(26, 23, 23));
+}
+
+.rl-uictransport {
+  background-image: linear-gradient(lightgreen, rgb(26, 23, 23));
+}
+
+.rl-spotangels {
+  background-image: linear-gradient(purple, rgb(26, 23, 23));
+}

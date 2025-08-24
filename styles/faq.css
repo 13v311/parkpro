@@ -46,7 +46,7 @@ section {
 }
 
 .faq-segmenta p {
-  color: rgb(158, 157, 157);
+  color: rgb(100, 99, 99);
 }
 
 .question-sidebar {
@@ -91,7 +91,7 @@ section {
 .answer-sidebar {
   height: 100px;
   width: 4px;
-  background-color: rgb(158, 157, 157);
+  background-color: rgb(100, 99, 99);
 }
 
 

@@ -1,0 +1,32 @@
+.all-tips-container {
+  display: flex;
+  max-width: 100%;
+  margin: 10px;
+}
+
+.tip-container {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  box-shadow: 0.5px 0.5px 3px;
+  background-color: white;
+  margin: 10px;
+  border-radius: 4px;
+}
+
+.button-container {
+  display: flex;
+  gap: 7px;
+}
+
+.approve-button {
+  background-color: green;
+  color: white;
+  font-weight: 500;
+}
+
+.deny-button {
+  background-color: red;
+  color: white;
+  font-weight: 500;
+}
