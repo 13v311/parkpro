@@ -1,4 +1,3 @@
-
 const qAndA = {
   1: "ParkPro is a web app made by a UIC student to help other students find the best parking spots based on their class schedule. It also features parking tips/advice submitted by others!",
   2: "Average walking times were found using the Google Maps API, then stored in Firebase. We recommend the top 3 (or more depending on user preferences) lots with the shortest average time—and if you choose, you can even tell us which classes are more important, and we’ll prioritize those in our recommendations!",

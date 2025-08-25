@@ -255,7 +255,7 @@ function renderList() {
       <p>${className}</p>
       <p>${building}</p>
       <button onclick="deleteClass(${i})">
-        <img src="/images/trashcantrans.png">
+        <img src="images/trashcantrans.png">
       </button>
     </div>`;
 
