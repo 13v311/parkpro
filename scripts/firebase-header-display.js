@@ -23,7 +23,7 @@ firebase.auth().onAuthStateChanged((user) => {
     profLink.style.display = 'none';
     authLink.style.display = 'block';
     //additional things that have to be added for beta testing, ensures ppl unaccepted cannot just use the site
-    window.location.href = "/frontend-html/waitlist.html";
+    window.location.href = "../frontend-html/waitlist.html";
     alert("If you are not logged in (and accepted as a beta tester) you cannot access any parts of this site besides this page and the login.");
 
     

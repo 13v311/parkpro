@@ -1,10 +1,10 @@
 firebase.auth().onAuthStateChanged((user) => {
   if (!user) {
     // Not logged in — send to homepage
-    window.location.href = "homepage.html";
+    window.location.href = "../frontend-html/homepage.html";
   } else if (user.email !== "lkens@uic.edu") {
     // Logged in but not admin — block access
-    window.location.href = "homepage.html";
+    window.location.href = "../frontend-html/homepage.html";
     alert("You do not have access to this page.");
   } else {
     // Admin is in — load moderation content
