@@ -7,7 +7,7 @@ function checkUser() {
   if(user === "lkens@uic.edu") {
     let PIN = prompt("What is the pin for lkens@uic.edu?");
     if(PIN === "0415") {
-      window.location.href = "/frontend-html/homepage.html";
+      window.location.href = "/frontend-html/auth.html";
     } else {
       alert('This is not the correct PIN. Please do not pretend to be an admin.');
     }
