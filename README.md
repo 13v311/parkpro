@@ -1,2 +1,2 @@
 # parkpro
-ParkPro is a summer project I created in 2025 with the intenion of making parking easier for students at my university, especially first-years. It utilizes HTML/CSS/JS, Firebase, and Google Maps APIs.
+ParkPro is a summer project I created in 2025 with the intenion of making parking easier for students at my university, especially first-years. It utilizes HTML/CSS/JS, Firebase, and Google Maps APIs. It allows users to input their class schedule and receive recommended lots based on the proximity of the parking lots to their overall schedule. I utilized Google Maps APIs specifically to calculate this proximity data.
